@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.O.L. Tech | Soluciones On-Line Tecnológicas</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: rgba(20, 27, 44, 0.75);
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --accent-pink: #ec4899;
+            --text-main: #f8fafc;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Navbar */
+        .navbar-custom {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 140px 0 90px;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(6, 182, 212, 0) 70%);
+            filter: blur(60px);
+            z-index: -1;
+        }
+
+        /* Cards Design */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+        }
+
+        .star-badge {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Custom Buttons */
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            padding: 12px 28px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            opacity: 0.9;
+            transform: scale(1.03);
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-outline-custom {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 12px;
+            padding: 12px 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand fw-extrabold fs-4" href="#">
+                <i class="fa-solid fa-bolt text-warning me-2"></i>S.O.L. <span class="gradient-text">Tech</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-3 text-center py-3 py-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos Estrella</a></li>
+                    <li class="nav-item"><a class="btn btn-gradient btn-sm px-3 mt-2 mt-lg-0" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section text-center">
+        <div class="container" data-aos="fade-up" data-aos-duration="1000">
+            <span class="badge bg-dark border border-secondary rounded-pill px-3 py-2 mb-3 text-light">
+                <i class="fa-solid fa-microchip text-info me-2"></i>Laboratorio de Innovación Social y Tecnológica
+            </span>
+            <h1 class="display-3 fw-bold mb-4">
+                Ingeniería, IA & Hardware <br>para <span class="gradient-text">Transformar el Mundo</span>
+            </h1>
+            <p class="lead text-secondary max-width-700 mx-auto mb-5" style="max-width: 700px;">
+                Somos una organización juvenil de Cusco dedicada a crear plataformas web de alto impacto, soluciones con Inteligencia Artificial e integración de sistemas hardware para resolver problemáticas sociales reales.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#proyectos" class="btn btn-gradient">Explorar Proyectos</a>
+                <button onclick="verDemoInfo()" class="btn btn-outline-custom">
+                    <i class="fa-solid fa-play me-2 text-info"></i>Ver Visión
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros" class="py-5">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <span class="text-info fw-bold text-uppercase">Nuestra Misión</span>
+                    <h2 class="display-5 fw-bold mb-4">Donde existe un problema, <span class="gradient-text">creamos tecnología</span></h2>
+                    <p class="text-secondary">
+                        S.O.L. Tech (Soluciones On-Line Tecnológicas) nace de la convicción de que la tecnología de frontera no debe ser exclusiva del sector corporativo, sino un puente directo para el desarrollo humano y la equidad social.
+                    </p>
+                    <div class="row g-3 mt-2">
+                        <div class="col-6">
+                            <div class="p-3 glass-card text-center">
+                                <h3 class="fw-bold gradient-text mb-0">100%</h3>
+                                <small class="text-secondary">Compromiso Altruista</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 glass-card text-center">
+                                <h3 class="fw-bold gradient-text mb-0">IA + IoT</h3>
+                                <small class="text-secondary">Arquitectura de Frontera</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <i class="fa-solid fa-brain tech-icon"></i>
+                                <h5>Inteligencia Artificial</h5>
+                                <p class="small text-secondary mb-0">Modelos predictivos, triaje inteligente y procesamiento de lenguaje natural bilingüe.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <i class="fa-solid fa-layer-group tech-icon"></i>
+                                <h5>Sistemas Web Scalables</h5>
+                                <p class="small text-secondary mb-0">Paneles administrativos con control de acceso (ACL) y mapas interactivos georreferenciados.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <i class="fa-solid fa-microchip tech-icon"></i>
+                                <h5>Hardware & IoT</h5>
+                                <p class="small text-secondary mb-0">Integración de microcontroladores y sensores para recolección de datos en campo.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="glass-card p-4 h-100">
+                                <i class="fa-solid fa-earth-americas tech-icon"></i>
+                                <h5>Inclusión Intercultural</h5>
+                                <p class="small text-secondary mb-0">Soluciones preparadas para idiomas originarios (Quechua) y comunidades vulnerables.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos Estrella -->
+    <section id="proyectos" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Portafolio de Impacto</span>
+                <h2 class="display-5 fw-bold">Nuestros Proyectos <span class="gradient-text">Estrella</span></h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- WasiQhari -->
+                <div class="col-lg-6" data-aos="flip-left">
+                    <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="star-badge"><i class="fa-solid fa-star me-1"></i> Plataforma Principal</span>
+                                <i class="fa-solid fa-hand-holding-heart text-danger fs-3"></i>
+                            </div>
+                            <h3 class="fw-bold mb-2">WasiQhari</h3>
+                            <p class="text-secondary small">
+                                Plataforma de gestión georreferenciada para la asistencia social. Utiliza algoritmos de IA para el triaje automatizado de vulnerabilidad y mapeo interactivo en tiempo real, agilizando la llegada de ayuda a quienes más lo necesitan.
+                            </p>
+                            <div class="d-flex gap-2 flex-wrap mb-4">
+                                <span class="badge bg-dark border border-secondary">Triaje IA</span>
+                                <span class="badge bg-dark border border-secondary">Geolocalización</span>
+                                <span class="badge bg-dark border border-secondary">Control ACL</span>
+                            </div>
+                        </div>
+                        <button onclick="infoWasiQhari()" class="btn btn-gradient w-100 mt-3">
+                            <i class="fa-solid fa-circle-info me-2"></i>Ver Detalles Técnicos
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Allin Yachay Nexus -->
+                <div class="col-lg-6" data-aos="flip-right">
+                    <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-info text-dark font-weight-bold">EdTech + IA</span>
+                                <i class="fa-solid fa-graduation-cap text-info fs-3"></i>
+                            </div>
+                            <h3 class="fw-bold mb-2">Allin Yachay Nexus</h3>
+                            <p class="text-secondary small">
+                                Ecosistema inteligente enfocado en la prevención de la deserción estudiantil universitaria. Integra analítica predictiva, tutoría adaptativa con IA y soporte bilingüe en Español y Quechua.
+                            </p>
+                            <div class="d-flex gap-2 flex-wrap mb-4">
+                                <span class="badge bg-dark border border-secondary">Gemini API</span>
+                                <span class="badge bg-dark border border-secondary">Quechua Bot</span>
+                                <span class="badge bg-dark border border-secondary">Yachay Score</span>
+                            </div>
+                        </div>
+                        <button onclick="infoNexus()" class="btn btn-gradient w-100 mt-3">
+                            <i class="fa-solid fa-circle-info me-2"></i>Ver Detalles Técnicos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacto -->
+    <footer id="contacto" class="py-5 border-top border-secondary mt-5" style="background: #05080e;">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h4 class="fw-bold"><i class="fa-solid fa-bolt text-warning me-2"></i>S.O.L. <span class="gradient-text">Tech</span></h4>
+                    <p class="text-secondary small mb-0">Soluciones On-Line Tecnológicas — Cusco, Perú.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://facebook.com" target="_blank" class="btn btn-outline-custom btn-sm me-2">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <button onclick="contactarModal()" class="btn btn-gradient btn-sm">
+                        <i class="fa-solid fa-envelope me-1"></i> Contactar Equipo
+                    </button>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <p class="text-center text-secondary small mb-0">© 2026 S.O.L. Tech. Desarrollado con pasión para transformar el Perú.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // Inicializar animaciones de desplazamiento
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Funciones interactivas con SweetAlert2
+        function verDemoInfo() {
+            Swal.fire({
+                title: 'Visión S.O.L. Tech',
+                text: 'Combinamos software, hardware y pensamiento altruista para construir soluciones digitales públicas que protejan a los más vulnerables.',
+                icon: 'info',
+                background: '#141b2c',
+                color: '#fff',
+                confirmButtonColor: '#8b5cf6'
+            });
+        }
+
+        function infoWasiQhari() {
+            Swal.fire({
+                title: 'WasiQhari - Arquitectura',
+                html: '<div class="text-start"><p><b>Componentes Clave:</b></p><ul><li>Procesamiento de triaje con IA.</li><li>Mapeo interactivo en tiempo real.</li><li>Listas de Control de Acceso (ACL).</li><li>Diseño adaptable para teléfonos móviles.</li></ul></div>',
+                icon: 'success',
+                background: '#141b2c',
+                color: '#fff',
+                confirmButtonColor: '#06b6d4'
+            });
+        }
+
+        function infoNexus() {
+            Swal.fire({
+                title: 'Allin Yachay Nexus - Arquitectura',
+                html: '<div class="text-start"><p><b>Componentes Clave:</b></p><ul><li>Motor de IA basado en Gemini API.</li><li>Soporte intercultural Español - Quechua.</li><li>Algoritmo propio: Yachay Score.</li><li>Dashboard de métricas institucionales.</li></ul></div>',
+                icon: 'success',
+                background: '#141b2c',
+                color: '#fff',
+                confirmButtonColor: '#06b6d4'
+            });
+        }
+
+        function contactarModal() {
+            Swal.fire({
+                title: '¡Ponte en contacto!',
+                text: 'Escríbenos a nuestro canal oficial para convenios, voluntariado o alianzas estratégicas.',
+                input: 'email',
+                inputPlaceholder: 'Ingresa tu correo electrónico',
+                showCancelButton: true,
+                confirmButtonText: 'Enviar',
+                background: '#141b2c',
+                color: '#fff',
+                confirmButtonColor: '#8b5cf6'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: '¡Mensaje Recibido!',
+                        text: 'El equipo de S.O.L. Tech se pondrá en contacto pronto.',
+                        icon: 'success',
+                        background: '#141b2c',
+                        color: '#fff'
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
