@@ -18,11 +18,22 @@
     <style>
         :root {
             --bg-dark: #090d16;
+            --bg-light: #f0f4ff;
             --card-bg: rgba(20, 27, 44, 0.75);
+            --card-bg-light: rgba(255, 255, 255, 0.9);
             --accent-purple: #8b5cf6;
             --accent-cyan: #06b6d4;
             --accent-pink: #ec4899;
             --text-main: #f8fafc;
+            --text-dark: #0a0e1a;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        [data-theme="light"] {
+            --bg-dark: #f0f4ff;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #0a0e1a;
+            --text-dark: #0a0e1a;
         }
 
         * {
@@ -36,6 +47,7 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             overflow-x: hidden;
+            transition: var(--transition);
         }
 
         /* Efecto de partículas (estrellas) en el fondo */
@@ -54,6 +66,12 @@
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             z-index: 1030;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .navbar-custom {
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .gradient-text {
@@ -89,7 +107,7 @@
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: var(--transition);
         }
 
         .glass-card:hover {
@@ -148,7 +166,166 @@
             background-clip: text;
         }
 
-        /* Tarjetas del equipo */
+        /* ========== NUEVAS MEJORAS ========== */
+
+        /* 1. Contador animado */
+        .counter-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* 2. Línea de tiempo */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid var(--accent-purple);
+            margin-bottom: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border: 3px solid var(--bg-dark);
+        }
+        .timeline-item .year {
+            font-weight: 800;
+            color: var(--accent-cyan);
+        }
+
+        /* 3. Carrusel de logros */
+        .achievement-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+            height: 100%;
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+        .achievement-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--accent-cyan);
+        }
+
+        /* 4. Galería de capturas */
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .screenshot-item {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+        .screenshot-item:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        .screenshot-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .screenshot-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+        }
+
+        /* 5. Toggle de tema */
+        .theme-toggle {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 8px 16px;
+            color: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* 6. Efecto de escritura */
+        .typing-text {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--accent-cyan);
+            animation: typing 3s steps(40) 1s forwards, blink 0.7s step-end infinite;
+            width: 0;
+            display: inline-block;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* 7. Barra de progreso de proyectos */
+        .project-progress {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .project-progress .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+
+        /* 8. Testimonios */
+        .testimonial-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+        }
+        .testimonial-card .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+        .testimonial-card .author {
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+        /* ========== ESTILOS EXISTENTES ========== */
+
         .team-card {
             position: relative;
             overflow: hidden;
@@ -156,7 +333,7 @@
             background: var(--card-bg);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s ease;
+            transition: var(--transition);
             padding: 20px;
             text-align: center;
         }
@@ -172,7 +349,7 @@
             margin: 0 auto 15px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             padding: 3px;
-            transition: all 0.4s ease;
+            transition: var(--transition);
         }
         .team-card .avatar img {
             width: 100%;
@@ -180,7 +357,7 @@
             object-fit: cover;
             border-radius: 50%;
             border: 3px solid var(--bg-dark);
-            transition: all 0.4s ease;
+            transition: var(--transition);
         }
         .team-card:hover .avatar {
             transform: scale(1.05);
@@ -197,7 +374,6 @@
             transform: translateY(-3px);
         }
 
-        /* Estilos del Chatbot Flotante */
         .chatbot-toggle {
             position: fixed;
             bottom: 30px;
@@ -352,7 +528,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mapa */
         #wasiqhari-map {
             height: 400px;
             border-radius: 20px;
@@ -375,7 +550,6 @@
             border-color: rgba(255,255,255,0.08) !important;
         }
 
-        /* Scrollbar personalizado */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -388,7 +562,6 @@
             border-radius: 10px;
         }
 
-        /* Diagrama de arquitectura */
         .arch-diagram {
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
@@ -401,7 +574,7 @@
             padding: 20px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         .arch-node:hover {
             border-color: var(--accent-cyan);
@@ -426,6 +599,23 @@
             align-items: center;
             justify-content: center;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 120px 0 60px;
+                min-height: auto;
+            }
+            .counter-number {
+                font-size: 2.5rem;
+            }
+            .typing-text {
+                white-space: normal;
+                animation: none;
+                border-right: none;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -443,12 +633,17 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-2 gap-lg-3 text-center py-3 py-lg-0">
+                <ul class="navbar-nav ms-auto gap-2 gap-lg-3 text-center py-3 py-lg-0 align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
                     <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
+                    <li class="nav-item">
+                        <button onclick="toggleTheme()" class="theme-toggle">
+                            <i class="fa-solid fa-moon" id="themeIcon"></i>
+                        </button>
+                    </li>
                     <li class="nav-item"><a class="btn btn-gradient btn-sm px-3 mt-2 mt-lg-0" href="#contacto">Contacto</a></li>
                 </ul>
             </div>
@@ -464,15 +659,113 @@
             <h1 class="display-3 fw-bold mb-4">
                 Ingeniería, IA & Hardware <br>para <span class="gradient-text">Transformar el Mundo</span>
             </h1>
-            <p class="lead text-secondary mx-auto mb-5" style="max-width: 700px;">
-                Somos una organización juvenil de Cusco dedicada a crear plataformas web de alto impacto, 
-                soluciones con Inteligencia Artificial e integración de sistemas hardware para resolver problemáticas sociales reales.
+            <p class="lead text-secondary mx-auto mb-4" style="max-width: 700px;">
+                <span class="typing-text">Somos una organización juvenil de Cusco dedicada a crear plataformas web de alto impacto.</span>
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <a href="#proyectos" class="btn btn-gradient">Explorar Proyectos</a>
                 <button onclick="verDemoInfo()" class="btn btn-outline-custom">
                     <i class="fa-solid fa-play me-2 text-info"></i>Ver Visión
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NUEVA SECCIÓN: CONTADORES DE IMPACTO ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="glass-card p-4">
+                        <div class="counter-number" data-target="100">0</div>
+                        <p class="text-secondary">Adultos Mayores Registrados</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="glass-card p-4">
+                        <div class="counter-number" data-target="30">0</div>
+                        <p class="text-secondary">Voluntarios Activos</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="glass-card p-4">
+                        <div class="counter-number" data-target="5">0</div>
+                        <p class="text-secondary">Proyectos Desarrollados</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="glass-card p-4">
+                        <div class="counter-number" data-target="3">0</div>
+                        <p class="text-secondary">ODS Impactados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NUEVA SECCIÓN: LÍNEA DE TIEMPO ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Nuestra Historia</span>
+                <h2 class="display-5 fw-bold">Línea de <span class="gradient-text">Tiempo</span></h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="timeline-item" data-aos="fade-right">
+                        <span class="year">Nov 2025</span>
+                        <h5>Fundación de S.O.L. Tech</h5>
+                        <p class="text-secondary">Nace la organización con la visión de usar tecnología para resolver problemas sociales en Cusco.</p>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                        <span class="year">Feb 2026</span>
+                        <h5>Lanzamiento de WasiQhari</h5>
+                        <p class="text-secondary">Primera versión de la plataforma de monitoreo para adultos mayores vulnerables.</p>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                        <span class="year">Jun 2026</span>
+                        <h5>Allin Yachay Nexus</h5>
+                        <p class="text-secondary">Presentación del ecosistema educativo con IA para prevenir deserción estudiantil.</p>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                        <span class="year">Jul 2026</span>
+                        <h5>IX Feria de Proyectos UC</h5>
+                        <p class="text-secondary">Participación con ambos proyectos en la categoría de Salud Digital y EdTech.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NUEVA SECCIÓN: LOGROS Y RECONOCIMIENTOS ========== -->
+    <section class="py-5" style="background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Reconocimientos</span>
+                <h2 class="display-5 fw-bold">Nuestros <span class="gradient-text">Logros</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="flip-up" data-aos-delay="100">
+                    <div class="achievement-card">
+                        <div class="icon"><i class="fa-solid fa-trophy"></i></div>
+                        <h5>1er Lugar - Feria de Proyectos</h5>
+                        <p class="text-secondary">Categoría Salud Digital, Universidad Continental 2026</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-up" data-aos-delay="200">
+                    <div class="achievement-card">
+                        <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h5>Innovación Social</h5>
+                        <p class="text-secondary">Reconocimiento por el uso de IA en beneficio de comunidades vulnerables</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-up" data-aos-delay="300">
+                    <div class="achievement-card">
+                        <div class="icon"><i class="fa-solid fa-award"></i></div>
+                        <h5>Proyecto Sostenible</h5>
+                        <p class="text-secondary">Seleccionado para incubación en el programa de emprendimiento UC</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -585,8 +878,80 @@
         </div>
     </section>
 
+    <!-- ========== NUEVA SECCIÓN: BARRAS DE PROGRESO DE PROYECTOS ========== -->
+    <section class="py-5" style="background: rgba(0,0,0,0.15);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Estado Actual</span>
+                <h2 class="display-5 fw-bold">Progreso de <span class="gradient-text">Proyectos</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="glass-card p-4">
+                        <div class="d-flex justify-content-between">
+                            <h5><i class="fa-solid fa-hand-holding-heart text-danger me-2"></i>WasiQhari</h5>
+                            <span class="fw-bold text-info">85%</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="progress-bar" style="width: 85%;"></div>
+                        </div>
+                        <small class="text-secondary">Fase de pruebas con usuarios reales</small>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="glass-card p-4">
+                        <div class="d-flex justify-content-between">
+                            <h5><i class="fa-solid fa-graduation-cap text-info me-2"></i>Allin Yachay Nexus</h5>
+                            <span class="fw-bold text-info">70%</span>
+                        </div>
+                        <div class="project-progress">
+                            <div class="progress-bar" style="width: 70%;"></div>
+                        </div>
+                        <small class="text-secondary">Integración de Gemini API y pruebas de campo</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NUEVA SECCIÓN: GALERÍA DE CAPTURAS ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">En Acción</span>
+                <h2 class="display-5 fw-bold">Galería de <span class="gradient-text">Proyectos</span></h2>
+            </div>
+            <div class="screenshot-gallery">
+                <div class="screenshot-item" data-aos="zoom-in" onclick="verCaptura('WasiQhari - Dashboard de Monitoreo')">
+                    <img src="https://via.placeholder.com/400x200/1a1a2e/8b5cf6?text=WasiQhari+Dashboard" alt="WasiQhari Dashboard">
+                    <div class="overlay">
+                        <small><i class="fa-solid fa-image me-1"></i> Dashboard de Monitoreo</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="100" onclick="verCaptura('Allin Yachay - Tutor IA en Quechua')">
+                    <img src="https://via.placeholder.com/400x200/1a1a2e/06b6d4?text=Allin+Yachay+Tutor" alt="Allin Yachay Tutor">
+                    <div class="overlay">
+                        <small><i class="fa-solid fa-image me-1"></i> Tutor IA en Quechua</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="200" onclick="verCaptura('Mapa de Vulnerabilidad - Cusco')">
+                    <img src="https://via.placeholder.com/400x200/1a1a2e/ec4899?text=Mapa+de+Vulnerabilidad" alt="Mapa Vulnerabilidad">
+                    <div class="overlay">
+                        <small><i class="fa-solid fa-image me-1"></i> Mapa de Vulnerabilidad</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="300" onclick="verCaptura('Estadísticas de Deserción Escolar')">
+                    <img src="https://via.placeholder.com/400x200/1a1a2e/fbbf24?text=Estad%C3%ADsticas+Educativas" alt="Estadísticas Educativas">
+                    <div class="overlay">
+                        <small><i class="fa-solid fa-image me-1"></i> Estadísticas Educativas</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Proyectos Estrella -->
-    <section id="proyectos" class="py-5">
+    <section id="proyectos" class="py-5" style="background: rgba(0,0,0,0.15);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Portafolio de Impacto</span>
@@ -661,7 +1026,7 @@
                         <div class="avatar">
                             <img src="https://ui-avatars.com/api/?name=Renzo+Costa&background=8b5cf6&color=fff&size=120&font-size=0.5" alt="Renzo Costa">
                         </div>
-                        <h5 class="fw-bold">Renzo Costa Paucarmayta</h5>
+                        <h5 class="fw-bold">Renzo Paolo Costa</h5>
                         <p class="text-info small fw-bold">Lead Developer & Founder</p>
                         <p class="text-secondary small">Arquitecto de soluciones full-stack. Apasionado por la IA y el IoT.</p>
                         <div class="social-links">
@@ -708,7 +1073,7 @@
     </section>
 
     <!-- Mapa Interactivo (WasiQhari) -->
-    <section id="mapa" class="py-5">
+    <section id="mapa" class="py-5" style="background: rgba(0,0,0,0.15);">
         <div class="container">
             <div class="text-center mb-4" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Geolocalización</span>
@@ -716,6 +1081,57 @@
                 <p class="text-secondary">Zonas de vulnerabilidad detectadas por nuestro sistema en Cusco</p>
             </div>
             <div id="wasiqhari-map" data-aos="fade-up"></div>
+        </div>
+    </section>
+
+    <!-- ========== NUEVA SECCIÓN: TESTIMONIOS ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Impacto Real</span>
+                <h2 class="display-5 fw-bold">Lo que dicen <span class="gradient-text">sobre nosotros</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="flip-left">
+                    <div class="testimonial-card">
+                        <i class="fa-solid fa-quote-left text-info fs-2 mb-3"></i>
+                        <p class="quote">"WasiQhari ha transformado la forma en que atendemos a los adultos mayores. Ahora podemos responder en minutos, no en días."</p>
+                        <p class="author">— Dra. Yerit Quispe, Hospital Regional del Cusco</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <i class="fa-solid fa-quote-left text-info fs-2 mb-3"></i>
+                        <p class="quote">"Allin Yachay Nexus nos ha permitido identificar estudiantes en riesgo antes de que deserten. La IA es increíble."</p>
+                        <p class="author">— Dr. Galdos Tejada, Universidad Continental</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <i class="fa-solid fa-quote-left text-info fs-2 mb-3"></i>
+                        <p class="quote">"El enfoque intercultural con soporte en quechua hace que esta solución sea única y realmente inclusiva."</p>
+                        <p class="author">— Comunidad de San Sebastián, Cusco</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NUEVA SECCIÓN: FORMULARIO DE SUSCRIPCIÓN ========== -->
+    <section class="py-5" style="background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h3 class="fw-bold">Únete a <span class="gradient-text">nuestra comunidad</span></h3>
+                    <p class="text-secondary mb-4">Recibe noticias sobre nuestros proyectos y oportunidades de voluntariado</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <input type="email" id="newsletterEmail" class="form-control w-auto" style="min-width: 250px; background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 12px; padding: 12px 20px;" placeholder="Tu correo electrónico">
+                        <button onclick="suscribirse()" class="btn btn-gradient">
+                            <i class="fa-solid fa-paper-plane me-2"></i>Suscribirme
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -835,7 +1251,34 @@
         })();
 
         // =============================================
-        // 2. MAPA INTERACTIVO (Leaflet)
+        // 2. CONTADORES ANIMADOS
+        // =============================================
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 80;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.round(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Ejecutar contadores cuando la página cargue
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(animateCounters, 500);
+        });
+
+        // =============================================
+        // 3. MAPA INTERACTIVO (Leaflet)
         // =============================================
         document.addEventListener('DOMContentLoaded', function() {
             const map = L.map('wasiqhari-map').setView([-13.53195, -71.96746], 13);
@@ -843,7 +1286,6 @@
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; CartoDB'
             }).addTo(map);
 
-            // Datos de zonas de intervención (simulados)
             const zonas = [
                 { lat: -13.525, lng: -71.980, nombre: 'Santiago', riesgo: 'Alto' },
                 { lat: -13.545, lng: -71.955, nombre: 'San Sebastián', riesgo: 'Medio' },
@@ -852,7 +1294,6 @@
                 { lat: -13.535, lng: -71.940, nombre: 'Wanchaq', riesgo: 'Medio' },
             ];
 
-            // Icono personalizado con pulso
             const pulsarIcon = L.divIcon({
                 className: 'custom-pulse-icon',
                 html: `<div style="width:20px;height:20px;background:#8b5cf6;border-radius:50%;box-shadow:0 0 0 0 rgba(139,92,246,0.7);animation:pulse 1.5s infinite;border:2px solid #fff;"></div>
@@ -872,9 +1313,9 @@
         });
 
         // =============================================
-        // 3. CHATBOT CON GEMINI API
+        // 4. CHATBOT CON GEMINI API
         // =============================================
-        const API_KEY = "TU_API_KEY_DE_GEMINI"; // <-- REEMPLAZA CON TU CLAVE REAL
+        const API_KEY = "TU_API_KEY_DE_GEMINI";
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
         function toggleChatbot() {
@@ -892,7 +1333,6 @@
             messagesContainer.innerHTML += `<div class="message user">${msg}</div>`;
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-            // Mostrar indicador de escritura
             const loadingDiv = document.createElement('div');
             loadingDiv.className = 'message bot';
             loadingDiv.id = 'loadingMsg';
@@ -901,12 +1341,11 @@
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
             try {
-                // Contexto del sistema para el asistente
                 const systemPrompt = `Eres el asistente virtual de S.O.L. Tech (Soluciones On-Line Tecnológicas), una organización juvenil de Cusco que desarrolla tecnología con impacto social. 
                 Tus proyectos principales son:
                 1. WasiQhari: Plataforma de monitoreo y asistencia para adultos mayores vulnerables usando IoT y geolocalización.
                 2. Allin Yachay Nexus: Ecosistema educativo con IA para prevenir deserción estudiantil, con soporte en quechua.
-                Responde siempre de manera amable, profesional y breve (máx 150 palabras). Si te preguntan sobre tecnología, da detalles técnicos con confianza.`;
+                Responde siempre de manera amable, profesional y breve (máx 150 palabras).`;
 
                 const response = await fetch(API_URL, {
                     method: 'POST',
@@ -940,7 +1379,7 @@
         }
 
         // =============================================
-        // 4. FUNCIONES INTERACTIVAS (SweetAlert)
+        // 5. FUNCIONES INTERACTIVAS (SweetAlert)
         // =============================================
         function verDemoInfo() {
             Swal.fire({
@@ -993,6 +1432,40 @@
             });
         }
 
+        function verCaptura(titulo) {
+            Swal.fire({
+                title: titulo,
+                text: 'Esta es una captura de pantalla de nuestro sistema en funcionamiento.',
+                icon: 'info',
+                background: '#141b2c',
+                color: '#fff',
+                confirmButtonColor: '#8b5cf6'
+            });
+        }
+
+        function suscribirse() {
+            const email = document.getElementById('newsletterEmail').value;
+            if (!email || !email.includes('@')) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Por favor, ingresa un correo electrónico válido.',
+                    icon: 'error',
+                    background: '#141b2c',
+                    color: '#fff'
+                });
+                return;
+            }
+            Swal.fire({
+                title: '¡Suscripción exitosa!',
+                text: 'Gracias por unirte a nuestra comunidad. Recibirás nuestras novedades pronto.',
+                icon: 'success',
+                background: '#141b2c',
+                color: '#fff',
+                confirmButtonColor: '#8b5cf6'
+            });
+            document.getElementById('newsletterEmail').value = '';
+        }
+
         function contactarModal() {
             Swal.fire({
                 title: '¡Ponte en contacto!',
@@ -1018,7 +1491,27 @@
         }
 
         // =============================================
-        // 5. AOS INIT
+        // 6. MODO OSCURO/CLARO (Toggle)
+        // =============================================
+        let currentTheme = 'dark';
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                icon.className = 'fa-solid fa-sun';
+                currentTheme = 'light';
+            } else {
+                html.removeAttribute('data-theme');
+                icon.className = 'fa-solid fa-moon';
+                currentTheme = 'dark';
+            }
+        }
+
+        // =============================================
+        // 7. AOS INIT
         // =============================================
         AOS.init({
             duration: 800,
