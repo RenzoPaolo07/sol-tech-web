@@ -26,6 +26,8 @@
             --accent-purple: #8b5cf6;
             --accent-cyan: #06b6d4;
             --accent-pink: #ec4899;
+            --accent-yellow: #fbbf24;
+            --accent-green: #34d399;
             --text-main: #f8fafc;
             --text-dark: #0a0e1a;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -82,7 +84,6 @@
             background-clip: text;
         }
 
-        /* Hero con video de fondo */
         .hero-section {
             padding: 160px 0 90px;
             position: relative;
@@ -99,7 +100,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.15;
+            opacity: 0.12;
             z-index: 0;
             pointer-events: none;
         }
@@ -116,7 +117,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at center, rgba(9,13,22,0.3) 0%, rgba(9,13,22,0.8) 100%);
+            background: radial-gradient(ellipse at center, rgba(9,13,22,0.2) 0%, rgba(9,13,22,0.7) 100%);
             z-index: 0;
         }
 
@@ -132,17 +133,6 @@
             transform: translateY(-8px);
             border-color: var(--accent-cyan);
             box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
-        }
-
-        .star-badge {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            color: #fff;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 5px 14px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .btn-gradient {
@@ -217,7 +207,7 @@
             color: var(--accent-cyan);
         }
 
-        /* Logros */
+        /* Logros Mejorados */
         .achievement-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -227,66 +217,41 @@
             border: 1px solid rgba(255,255,255,0.05);
             transition: var(--transition);
             height: 100%;
+            position: relative;
+            overflow: hidden;
         }
         .achievement-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
         }
         .achievement-card .icon {
             font-size: 3rem;
             margin-bottom: 15px;
             color: var(--accent-cyan);
         }
-
-        /* Galería */
-        .screenshot-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .screenshot-item {
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: var(--transition);
-            cursor: pointer;
-            position: relative;
-        }
-        .screenshot-item:hover {
-            transform: scale(1.03);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
-        }
-        .screenshot-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .screenshot-item .overlay {
+        .achievement-card .badge-status {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: #fff;
-        }
-
-        /* Toggle tema */
-        .theme-toggle {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            top: 15px;
+            right: 15px;
+            font-size: 0.7rem;
+            padding: 4px 12px;
             border-radius: 50px;
-            padding: 8px 16px;
-            color: #fff;
-            cursor: pointer;
-            transition: var(--transition);
         }
-        .theme-toggle:hover {
-            background: rgba(255,255,255,0.2);
+        .achievement-card .badge-status.completed {
+            background: var(--accent-green);
+            color: #000;
+        }
+        .achievement-card .badge-status.in-progress {
+            background: var(--accent-yellow);
+            color: #000;
+        }
+        .achievement-card .badge-status.pending {
+            background: var(--accent-pink);
+            color: #fff;
         }
 
-        /* Equipo */
+        /* Tarjetas de equipo */
         .team-card {
             position: relative;
             overflow: hidden;
@@ -513,7 +478,6 @@
             border-color: rgba(255,255,255,0.08) !important;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -526,7 +490,6 @@
             border-radius: 10px;
         }
 
-        /* Arquitectura */
         .arch-diagram {
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
@@ -565,7 +528,6 @@
             justify-content: center;
         }
 
-        /* Progreso de proyectos */
         .project-progress {
             height: 8px;
             background: rgba(255,255,255,0.1);
@@ -580,7 +542,6 @@
             transition: width 1.5s ease;
         }
 
-        /* Testimonios */
         .testimonial-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -602,7 +563,6 @@
             margin-top: 15px;
         }
 
-        /* Aliados */
         .ally-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -627,7 +587,6 @@
             color: var(--accent-cyan);
         }
 
-        /* Scroll to top */
         .scroll-top {
             position: fixed;
             bottom: 100px;
@@ -654,7 +613,6 @@
             display: flex;
         }
 
-        /* Tooltips */
         .tech-tooltip {
             position: relative;
             cursor: help;
@@ -675,7 +633,93 @@
             color: var(--text-main);
         }
 
-        /* Responsive */
+        .theme-toggle {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 8px 16px;
+            color: #fff;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item:hover {
+            border-color: var(--accent-cyan);
+        }
+        .faq-item .faq-question {
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .faq-item .faq-question:hover {
+            color: var(--accent-cyan);
+        }
+        .faq-item .faq-answer {
+            padding: 0 25px 25px;
+            display: none;
+            color: var(--text-secondary);
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .faq-item .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Galería */
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .screenshot-item {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+        .screenshot-item:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        .screenshot-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .screenshot-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 120px 0 60px;
@@ -713,10 +757,10 @@
                 <ul class="navbar-nav ms-auto gap-2 gap-lg-3 text-center py-3 py-lg-0 align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#logros">Logros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
                     <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#prensa">Prensa</a></li>
                     <li class="nav-item">
                         <button onclick="toggleTheme()" class="theme-toggle">
                             <i class="fa-solid fa-moon" id="themeIcon"></i>
@@ -728,7 +772,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section con Video -->
+    <!-- Hero Section -->
     <section id="inicio" class="hero-section text-center">
         <video class="hero-video-bg" autoplay muted loop playsinline>
             <source src="https://cdn.pixabay.com/video/2022/02/22/108550-684548970_large.mp4" type="video/mp4">
@@ -745,22 +789,25 @@
                 soluciones con Inteligencia Artificial e integración de sistemas hardware para resolver problemáticas sociales reales.
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="#proyectos" class="btn btn-gradient">Explorar Proyectos</a>
+                <a href="#logros" class="btn btn-gradient">Ver Nuestros Logros</a>
                 <button onclick="verDemoInfo()" class="btn btn-outline-custom">
                     <i class="fa-solid fa-play me-2 text-info"></i>Ver Visión
                 </button>
             </div>
-            <!-- Métrica geek: Líneas de código -->
             <div class="mt-5">
                 <span class="text-secondary small">
                     <i class="fa-solid fa-code me-1 text-info"></i>
                     <span id="linesOfCode">0</span> líneas de código escritas con ❤️
                 </span>
+                <span class="text-secondary small ms-4">
+                    <i class="fa-solid fa-eye me-1 text-info"></i>
+                    <span id="visitCounter">0</span> visitas
+                </span>
             </div>
         </div>
     </section>
 
-    <!-- ========== CONTADORES DE IMPACTO ========== -->
+    <!-- Contadores -->
     <section class="py-5">
         <div class="container">
             <div class="row g-4 text-center">
@@ -792,8 +839,171 @@
         </div>
     </section>
 
-    <!-- ========== LÍNEA DE TIEMPO ========== -->
-    <section class="py-5" style="background: rgba(0,0,0,0.15);">
+    <!-- ========== NUEVA SECCIÓN: LOGROS DETALLADOS ========== -->
+    <section id="logros" class="py-5" style="background: rgba(0,0,0,0.15);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Reconocimientos</span>
+                <h2 class="display-5 fw-bold">Nuestros <span class="gradient-text">Logros</span></h2>
+                <p class="text-secondary">Cada logro nos acerca más a nuestro objetivo de transformar el Perú con tecnología</p>
+            </div>
+
+            <!-- Logros destacados -->
+            <div class="row g-4">
+                <!-- Logro 1: Hospital Regional -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="100">
+                    <div class="achievement-card">
+                        <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
+                        <div class="icon"><i class="fa-solid fa-hospital"></i></div>
+                        <h5>Alianza con Hospital Regional</h5>
+                        <p class="text-secondary small">Resolución Directoral N° 160-2026-GORE CUSCO-GRSC-HRC/UGRH</p>
+                        <span class="badge bg-info text-dark">2026</span>
+                        <span class="badge bg-success text-dark ms-2">Validado</span>
+                    </div>
+                </div>
+
+                <!-- Logro 2: Gobierno Regional -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="200">
+                    <div class="achievement-card">
+                        <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
+                        <div class="icon"><i class="fa-solid fa-landmark"></i></div>
+                        <h5>Gobierno Regional del Cusco</h5>
+                        <p class="text-secondary small">Trabajo articulado para la implementación de WasiQhari</p>
+                        <span class="badge bg-info text-dark">2026</span>
+                        <span class="badge bg-success text-dark ms-2">En Curso</span>
+                    </div>
+                </div>
+
+                <!-- Logro 3: Premio Nacional de la Juventud -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="300">
+                    <div class="achievement-card">
+                        <span class="badge-status in-progress"><i class="fa-solid fa-clock me-1"></i>En Proceso</span>
+                        <div class="icon"><i class="fa-solid fa-award"></i></div>
+                        <h5>Premio Nacional de la Juventud</h5>
+                        <p class="text-secondary small">"Yenuri Chiguala Cruz" - Participación destacada</p>
+                        <span class="badge bg-warning text-dark">2026</span>
+                        <span class="badge bg-warning text-dark ms-2">Postulación</span>
+                    </div>
+                </div>
+
+                <!-- Logro 4: Global Youth Mobilization -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="400">
+                    <div class="achievement-card">
+                        <span class="badge-status in-progress"><i class="fa-solid fa-clock me-1"></i>En Proceso</span>
+                        <div class="icon"><i class="fa-solid fa-globe-americas"></i></div>
+                        <h5>Global Youth Mobilization (GYM)</h5>
+                        <p class="text-secondary small">Participación en programa internacional de impacto juvenil</p>
+                        <span class="badge bg-warning text-dark">2026</span>
+                        <span class="badge bg-info text-dark ms-2">Internacional</span>
+                    </div>
+                </div>
+
+                <!-- Logro 5: FabLab Fellowship UC -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="500">
+                    <div class="achievement-card">
+                        <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
+                        <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h5>FabLab Fellowship</h5>
+                        <p class="text-secondary small">Programa de innovación y fabricación digital - Universidad Continental</p>
+                        <span class="badge bg-info text-dark">2026</span>
+                        <span class="badge bg-success text-dark ms-2">Certificado</span>
+                    </div>
+                </div>
+
+                <!-- Logro 6: 2do Lugar Feria UC -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="600">
+                    <div class="achievement-card">
+                        <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
+                        <div class="icon"><i class="fa-solid fa-trophy"></i></div>
+                        <h5>2do Lugar - IX Feria de Proyectos</h5>
+                        <p class="text-secondary small">Categoría Innovación Tecnológica - Universidad Continental</p>
+                        <span class="badge bg-info text-dark">Jun 2026</span>
+                        <span class="badge bg-success text-dark ms-2">🏆</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificaciones adicionales -->
+            <div class="row mt-5">
+                <div class="col-12 text-center" data-aos="fade-up">
+                    <h5 class="text-info mb-4"><i class="fa-solid fa-certificate me-2"></i>Certificaciones y Resoluciones</h5>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <span class="badge bg-dark border border-secondary px-4 py-2">
+                            <i class="fa-solid fa-file-pdf text-danger me-2"></i>R.D. N° 160-2026-GORE CUSCO
+                        </span>
+                        <span class="badge bg-dark border border-secondary px-4 py-2">
+                            <i class="fa-solid fa-file-pdf text-danger me-2"></i>FabLab Fellowship UC
+                        </span>
+                        <span class="badge bg-dark border border-secondary px-4 py-2">
+                            <i class="fa-solid fa-file-pdf text-danger me-2"></i>Premio Nacional Juventud (Postulación)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN DE PUBLICACIONES Y REDES ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Comunidad</span>
+                <h2 class="display-5 fw-bold">Publicaciones y <span class="gradient-text">Redes</span></h2>
+            </div>
+            <div class="row g-4">
+                <!-- Artículo Científico -->
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="fa-solid fa-flask text-info fs-2"></i>
+                            <div>
+                                <h6 class="mb-0">Artículo Científico</h6>
+                                <small class="text-secondary">En proceso de publicación</small>
+                            </div>
+                        </div>
+                        <p class="text-secondary small">
+                            <strong>WasiQhari:</strong> Sistema IoT para la detección temprana de vulnerabilidad en adultos mayores.
+                            <br><br>
+                            <span class="badge bg-dark border border-secondary">En revisión</span>
+                            <span class="badge bg-dark border border-secondary ms-2">Revista indexada</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="fa-solid fa-share-nodes text-info fs-2"></i>
+                            <div>
+                                <h6 class="mb-0">Redes Sociales</h6>
+                                <small class="text-secondary">Síguenos para conocer nuestro día a día</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="https://www.facebook.com/people/SOL-Tech/61592034006842/" target="_blank" class="btn btn-outline-custom btn-sm">
+                                <i class="fa-brands fa-facebook me-2"></i>Facebook
+                            </a>
+                            <a href="#" class="btn btn-outline-custom btn-sm">
+                                <i class="fa-brands fa-linkedin me-2"></i>LinkedIn
+                            </a>
+                            <a href="#" class="btn btn-outline-custom btn-sm">
+                                <i class="fa-brands fa-instagram me-2"></i>Instagram
+                            </a>
+                        </div>
+                        <div class="mt-3">
+                            <small class="text-secondary">
+                                <i class="fa-solid fa-hashtag me-1"></i> #SOLTech #WasiQhari #AllinYachay #InnovaciónSocial
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Línea de Tiempo -->
+    <section class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Nuestra Historia</span>
@@ -812,119 +1022,37 @@
                         <p class="text-secondary">Primera versión de la plataforma de monitoreo para adultos mayores vulnerables.</p>
                     </div>
                     <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                        <span class="year">Ene 2026</span>
+                        <h5>Alianza con Hospital Regional</h5>
+                        <p class="text-secondary">Resolución Directoral N° 160-2026-GORE CUSCO-GRSC-HRC/UGRH</p>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="250">
+                        <span class="year">Mar 2026</span>
+                        <h5>FabLab Fellowship UC</h5>
+                        <p class="text-secondary">Participación en programa de innovación y fabricación digital.</p>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
                         <span class="year">Jun 2026</span>
                         <h5>Allin Yachay Nexus</h5>
                         <p class="text-secondary">Presentación del ecosistema educativo con IA para prevenir deserción estudiantil.</p>
                     </div>
-                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="350">
                         <span class="year">Jun 2026</span>
-                        <h5>IX Feria de Proyectos UC</h5>
+                        <h5>2do Lugar - IX Feria de Proyectos UC</h5>
                         <p class="text-secondary">Participación con ambos proyectos, obteniendo el <strong>2do Lugar</strong> en la categoría de Innovación.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== LOGROS ========== -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">Reconocimientos</span>
-                <h2 class="display-5 fw-bold">Nuestros <span class="gradient-text">Logros</span></h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="flip-up" data-aos-delay="100">
-                    <div class="achievement-card">
-                        <div class="icon"><i class="fa-solid fa-medal"></i></div>
-                        <h5>2do Lugar - Feria de Proyectos</h5>
-                        <p class="text-secondary">Categoría Innovación Tecnológica, Universidad Continental - Junio 2026</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="flip-up" data-aos-delay="200">
-                    <div class="achievement-card">
-                        <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
-                        <h5>Innovación Social</h5>
-                        <p class="text-secondary">Reconocimiento por el uso de IA en beneficio de comunidades vulnerables</p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="flip-up" data-aos-delay="300">
-                    <div class="achievement-card">
-                        <div class="icon"><i class="fa-solid fa-award"></i></div>
-                        <h5>Proyecto Sostenible</h5>
-                        <p class="text-secondary">Seleccionado para incubación en el programa de emprendimiento UC</p>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
+                        <span class="year">Jul 2026</span>
+                        <h5>Premio Nacional de la Juventud</h5>
+                        <p class="text-secondary">Postulación al Premio "Yenuri Chiguala Cruz"</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== ALIADOS ESTRATÉGICOS ========== -->
-    <section class="py-5" style="background: rgba(0,0,0,0.1);">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">Confían en nosotros</span>
-                <h2 class="display-5 fw-bold">Nuestros <span class="gradient-text">Aliados</span></h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="ally-card">
-                        <div class="ally-icon"><i class="fa-solid fa-university"></i></div>
-                        <h6>Universidad Continental</h6>
-                        <small class="text-secondary">EAP Ingeniería de Sistemas</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="ally-card">
-                        <div class="ally-icon"><i class="fa-solid fa-hospital"></i></div>
-                        <h6>Hospital Regional</h6>
-                        <small class="text-secondary">del Cusco</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="ally-card">
-                        <div class="ally-icon"><i class="fa-solid fa-city"></i></div>
-                        <h6>Municipalidad</h6>
-                        <small class="text-secondary">de San Sebastián</small>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="ally-card">
-                        <div class="ally-icon"><i class="fa-brands fa-google"></i></div>
-                        <h6>Google</h6>
-                        <small class="text-secondary">Gemini API Partner</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== GRÁFICOS DE IMPACTO (Chart.js) ========== -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">Datos en Vivo</span>
-                <h2 class="display-5 fw-bold">Impacto <span class="gradient-text">Medible</span></h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="glass-card p-4">
-                        <h5 class="text-center">ODS Impactados</h5>
-                        <canvas id="odsChart" height="250"></canvas>
-                    </div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="glass-card p-4">
-                        <h5 class="text-center">Cobertura por Distrito</h5>
-                        <canvas id="districtsChart" height="250"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Nosotros Section -->
-    <section id="nosotros" class="py-5" style="background: rgba(0,0,0,0.1);">
+    <!-- Nosotros -->
+    <section id="nosotros" class="py-5">
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
@@ -986,12 +1114,11 @@
     </section>
 
     <!-- Arquitectura -->
-    <section id="arquitectura" class="py-5">
+    <section id="arquitectura" class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Backend & Frontend</span>
                 <h2 class="display-5 fw-bold">Nuestra <span class="gradient-text">Arquitectura</span></h2>
-                <p class="text-secondary">Flujo de datos desde el hardware hasta el dashboard del usuario</p>
             </div>
             <div class="arch-diagram" data-aos="fade-up">
                 <div class="row g-3 align-items-center">
@@ -1021,13 +1148,13 @@
                 </div>
                 <div class="text-center mt-3">
                     <span class="badge bg-dark border border-secondary px-3 py-2">
-                        <span class="tech-tooltip" data-tooltip="Framework PHP para backend">Laravel</span>
+                        <span class="tech-tooltip" data-tooltip="Framework PHP">Laravel</span>
                         <i class="fa-brands fa-laravel ms-2 me-2 text-danger"></i>
                         <span class="tech-tooltip" data-tooltip="Runtime JavaScript">Node.js</span>
                         <i class="fa-brands fa-node-js ms-3 me-2 text-success"></i>
                         <span class="tech-tooltip" data-tooltip="IA de Google">Gemini API</span>
                         <i class="fa-solid fa-cloud ms-3 me-2 text-info"></i>
-                        <span class="tech-tooltip" data-tooltip="Base de datos relacional">MySQL</span>
+                        <span class="tech-tooltip" data-tooltip="Base de datos">MySQL</span>
                         <i class="fa-solid fa-database ms-3 me-2 text-warning"></i>
                     </span>
                 </div>
@@ -1035,8 +1162,8 @@
         </div>
     </section>
 
-    <!-- ========== BARRAS DE PROGRESO ========== -->
-    <section class="py-5" style="background: rgba(0,0,0,0.15);">
+    <!-- Progreso de Proyectos -->
+    <section class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Estado Actual</span>
@@ -1071,33 +1198,33 @@
         </div>
     </section>
 
-    <!-- ========== GALERÍA DE CAPTURAS ========== -->
-    <section class="py-5">
+    <!-- Galería -->
+    <section class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">En Acción</span>
                 <h2 class="display-5 fw-bold">Galería de <span class="gradient-text">Proyectos</span></h2>
             </div>
             <div class="screenshot-gallery">
-                <div class="screenshot-item" data-aos="zoom-in" onclick="verCaptura('WasiQhari - Dashboard de Monitoreo')">
+                <div class="screenshot-item" data-aos="zoom-in" onclick="verCaptura('WasiQhari - Dashboard')">
                     <img src="https://via.placeholder.com/400x200/1a1a2e/8b5cf6?text=WasiQhari+Dashboard" alt="WasiQhari Dashboard">
                     <div class="overlay">
                         <small><i class="fa-solid fa-image me-1"></i> Dashboard de Monitoreo</small>
                     </div>
                 </div>
-                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="100" onclick="verCaptura('Allin Yachay - Tutor IA en Quechua')">
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="100" onclick="verCaptura('Allin Yachay - Tutor IA')">
                     <img src="https://via.placeholder.com/400x200/1a1a2e/06b6d4?text=Allin+Yachay+Tutor" alt="Allin Yachay Tutor">
                     <div class="overlay">
                         <small><i class="fa-solid fa-image me-1"></i> Tutor IA en Quechua</small>
                     </div>
                 </div>
-                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="200" onclick="verCaptura('Mapa de Vulnerabilidad - Cusco')">
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="200" onclick="verCaptura('Mapa de Vulnerabilidad')">
                     <img src="https://via.placeholder.com/400x200/1a1a2e/ec4899?text=Mapa+de+Vulnerabilidad" alt="Mapa Vulnerabilidad">
                     <div class="overlay">
                         <small><i class="fa-solid fa-image me-1"></i> Mapa de Vulnerabilidad</small>
                     </div>
                 </div>
-                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="300" onclick="verCaptura('Estadísticas de Deserción Escolar')">
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="300" onclick="verCaptura('Estadísticas Educativas')">
                     <img src="https://via.placeholder.com/400x200/1a1a2e/fbbf24?text=Estad%C3%ADsticas+Educativas" alt="Estadísticas Educativas">
                     <div class="overlay">
                         <small><i class="fa-solid fa-image me-1"></i> Estadísticas Educativas</small>
@@ -1107,62 +1234,47 @@
         </div>
     </section>
 
-    <!-- Proyectos Estrella -->
-    <section id="proyectos" class="py-5" style="background: rgba(0,0,0,0.15);">
+    <!-- Proyectos -->
+    <section id="proyectos" class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">Portafolio de Impacto</span>
-                <h2 class="display-5 fw-bold">Nuestros Proyectos <span class="gradient-text">Estrella</span></h2>
+                <span class="text-info fw-bold text-uppercase">Portafolio</span>
+                <h2 class="display-5 fw-bold">Proyectos <span class="gradient-text">Estrella</span></h2>
             </div>
-
             <div class="row g-4">
-                <!-- WasiQhari -->
                 <div class="col-lg-6" data-aos="flip-left">
-                    <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
-                        <div>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="star-badge"><i class="fa-solid fa-star me-1"></i> Lanzado Nov 2025</span>
-                                <i class="fa-solid fa-hand-holding-heart text-danger fs-3"></i>
-                            </div>
-                            <h3 class="fw-bold mb-2">WasiQhari</h3>
-                            <p class="text-secondary small">
-                                Plataforma de gestión georreferenciada para la asistencia social. Utiliza algoritmos de IA para el triaje automatizado de vulnerabilidad y mapeo interactivo en tiempo real.
-                            </p>
-                            <div class="d-flex gap-2 flex-wrap mb-4">
-                                <span class="badge bg-dark border border-secondary">Triaje IA</span>
-                                <span class="badge bg-dark border border-secondary">Geolocalización</span>
-                                <span class="badge bg-dark border border-secondary">Control ACL</span>
-                                <span class="badge bg-dark border border-secondary">ODS 3,10,11</span>
-                            </div>
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="star-badge"><i class="fa-solid fa-star me-1"></i> Nov 2025</span>
+                            <i class="fa-solid fa-hand-holding-heart text-danger fs-3"></i>
                         </div>
-                        <button onclick="infoWasiQhari()" class="btn btn-gradient w-100 mt-3">
-                            <i class="fa-solid fa-circle-info me-2"></i>Ver Detalles Técnicos
+                        <h3 class="fw-bold mb-2">WasiQhari</h3>
+                        <p class="text-secondary small">Plataforma de gestión georreferenciada con IA para el triaje de vulnerabilidad.</p>
+                        <div class="d-flex gap-2 flex-wrap mb-4">
+                            <span class="badge bg-dark border border-secondary">Triaje IA</span>
+                            <span class="badge bg-dark border border-secondary">Geolocalización</span>
+                            <span class="badge bg-dark border border-secondary">ODS 3,10,11</span>
+                        </div>
+                        <button onclick="infoWasiQhari()" class="btn btn-gradient w-100">
+                            <i class="fa-solid fa-circle-info me-2"></i>Ver Detalles
                         </button>
                     </div>
                 </div>
-
-                <!-- Allin Yachay Nexus -->
                 <div class="col-lg-6" data-aos="flip-right">
-                    <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
-                        <div>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="badge bg-info text-dark font-weight-bold">Lanzado Jun 2026</span>
-                                <i class="fa-solid fa-graduation-cap text-info fs-3"></i>
-                            </div>
-                            <h3 class="fw-bold mb-2">Allin Yachay Nexus</h3>
-                            <p class="text-secondary small">
-                                Ecosistema inteligente enfocado en la prevención de la deserción estudiantil universitaria. 
-                                Integra analítica predictiva, tutoría adaptativa con IA y soporte bilingüe (Español/Quechua).
-                            </p>
-                            <div class="d-flex gap-2 flex-wrap mb-4">
-                                <span class="badge bg-dark border border-secondary">Gemini API</span>
-                                <span class="badge bg-dark border border-secondary">Quechua Bot</span>
-                                <span class="badge bg-dark border border-secondary">Yachay Score</span>
-                                <span class="badge bg-dark border border-secondary">ODS 4,9,10</span>
-                            </div>
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-info text-dark">Jun 2026</span>
+                            <i class="fa-solid fa-graduation-cap text-info fs-3"></i>
                         </div>
-                        <button onclick="infoNexus()" class="btn btn-gradient w-100 mt-3">
-                            <i class="fa-solid fa-circle-info me-2"></i>Ver Detalles Técnicos
+                        <h3 class="fw-bold mb-2">Allin Yachay Nexus</h3>
+                        <p class="text-secondary small">Ecosistema educativo con IA para prevenir deserción y tutoría en quechua.</p>
+                        <div class="d-flex gap-2 flex-wrap mb-4">
+                            <span class="badge bg-dark border border-secondary">Gemini API</span>
+                            <span class="badge bg-dark border border-secondary">Quechua Bot</span>
+                            <span class="badge bg-dark border border-secondary">ODS 4,9,10</span>
+                        </div>
+                        <button onclick="infoNexus()" class="btn btn-gradient w-100">
+                            <i class="fa-solid fa-circle-info me-2"></i>Ver Detalles
                         </button>
                     </div>
                 </div>
@@ -1171,15 +1283,13 @@
     </section>
 
     <!-- Equipo -->
-    <section id="equipo" class="py-5">
+    <section id="equipo" class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Talento Joven</span>
                 <h2 class="display-5 fw-bold">El <span class="gradient-text">Trío Dinámico</span></h2>
-                <p class="text-secondary">Los genios detrás del código y la innovación</p>
             </div>
             <div class="row g-4 justify-content-center">
-                <!-- Renzo -->
                 <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="team-card">
                         <div class="avatar">
@@ -1187,15 +1297,13 @@
                         </div>
                         <h5 class="fw-bold">Renzo Paolo Costa</h5>
                         <p class="text-info small fw-bold">Lead Developer & Founder</p>
-                        <p class="text-secondary small">Arquitecto de soluciones full-stack. Apasionado por la IA y el IoT.</p>
+                        <p class="text-secondary small">Arquitecto full-stack, IA e IoT.</p>
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/renzo-paolo-costa-paucarmayta-5072301ba/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href="#"><i class="fa-brands fa-github"></i></a>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         </div>
                     </div>
                 </div>
-                <!-- Brian -->
                 <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="team-card">
                         <div class="avatar">
@@ -1203,15 +1311,13 @@
                         </div>
                         <h5 class="fw-bold">Brian Villavicencio</h5>
                         <p class="text-info small fw-bold">Data Scientist & Backend</p>
-                        <p class="text-secondary small">Especialista en análisis predictivo y modelos de machine learning.</p>
+                        <p class="text-secondary small">Análisis predictivo y machine learning.</p>
                         <div class="social-links">
                             <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href="#"><i class="fa-brands fa-github"></i></a>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         </div>
                     </div>
                 </div>
-                <!-- Shara -->
                 <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="300">
                     <div class="team-card">
                         <div class="avatar">
@@ -1219,11 +1325,10 @@
                         </div>
                         <h5 class="fw-bold">Shara Betzabeht Trinidad</h5>
                         <p class="text-info small fw-bold">UI/UX & Hardware Engineer</p>
-                        <p class="text-secondary small">Diseño de experiencias inclusivas e integración de sensores IoT.</p>
+                        <p class="text-secondary small">Experiencia inclusiva y sensores IoT.</p>
                         <div class="social-links">
                             <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href="#"><i class="fa-brands fa-github"></i></a>
-                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1231,129 +1336,114 @@
         </div>
     </section>
 
-    <!-- Mapa Interactivo -->
-    <section id="mapa" class="py-5" style="background: rgba(0,0,0,0.15);">
+    <!-- Mapa -->
+    <section id="mapa" class="py-5">
         <div class="container">
             <div class="text-center mb-4" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Geolocalización</span>
-                <h2 class="display-5 fw-bold">Mapa de <span class="gradient-text">Intervención Social</span></h2>
-                <p class="text-secondary">Zonas de vulnerabilidad detectadas por nuestro sistema en Cusco</p>
+                <h2 class="display-5 fw-bold">Mapa de <span class="gradient-text">Intervención</span></h2>
             </div>
             <div id="wasiqhari-map" data-aos="fade-up"></div>
         </div>
     </section>
 
-    <!-- ========== SECCIÓN PRENSA ========== -->
-    <section id="prensa" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">En los Medios</span>
-                <h2 class="display-5 fw-bold">Prensa y <span class="gradient-text">Menciones</span></h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="glass-card p-4 h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <i class="fa-solid fa-newspaper text-info fs-2"></i>
-                            <div>
-                                <h6 class="mb-0">Diario El Comercio</h6>
-                                <small class="text-secondary">Junio 2026</small>
-                            </div>
-                        </div>
-                        <p class="text-secondary small">"Jóvenes cusqueños desarrollan plataforma con IA para prevenir deserción escolar"</p>
-                        <a href="#" class="text-info small">Leer más →</a>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="glass-card p-4 h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <i class="fa-solid fa-tv text-info fs-2"></i>
-                            <div>
-                                <h6 class="mb-0">TV Perú Noticias</h6>
-                                <small class="text-secondary">Noviembre 2025</small>
-                            </div>
-                        </div>
-                        <p class="text-secondary small">"WasiQhari: el bastón inteligente que cuida a los adultos mayores en Cusco"</p>
-                        <a href="#" class="text-info small">Ver reportaje →</a>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="glass-card p-4 h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <i class="fa-solid fa-blog text-info fs-2"></i>
-                            <div>
-                                <h6 class="mb-0">Blog Universidad Continental</h6>
-                                <small class="text-secondary">Junio 2026</small>
-                            </div>
-                        </div>
-                        <p class="text-secondary small">"Estudiantes de Ingeniería de Sistemas destacan en feria de proyectos con innovación social"</p>
-                        <a href="#" class="text-info small">Leer más →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== TESTIMONIOS ========== -->
+    <!-- Aliados -->
     <section class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">Impacto Real</span>
-                <h2 class="display-5 fw-bold">Lo que dicen <span class="gradient-text">sobre nosotros</span></h2>
+                <span class="text-info fw-bold text-uppercase">Confían en nosotros</span>
+                <h2 class="display-5 fw-bold">Nuestros <span class="gradient-text">Aliados</span></h2>
             </div>
             <div class="row g-4">
-                <div class="col-md-4" data-aos="flip-left">
-                    <div class="testimonial-card">
-                        <i class="fa-solid fa-quote-left text-info fs-2 mb-3"></i>
-                        <p class="quote">"WasiQhari ha transformado la forma en que atendemos a los adultos mayores. Ahora podemos responder en minutos, no en días."</p>
-                        <p class="author">— Dra. Yerit Quispe, Hospital Regional del Cusco</p>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="ally-card">
+                        <div class="ally-icon"><i class="fa-solid fa-hospital"></i></div>
+                        <h6>Hospital Regional</h6>
+                        <small class="text-secondary">R.D. N° 160-2026</small>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
-                    <div class="testimonial-card">
-                        <i class="fa-solid fa-quote-left text-info fs-2 mb-3"></i>
-                        <p class="quote">"Allin Yachay Nexus nos ha permitido identificar estudiantes en riesgo antes de que deserten. La IA es increíble."</p>
-                        <p class="author">— Dr. Galdos Tejada, Universidad Continental</p>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="ally-card">
+                        <div class="ally-icon"><i class="fa-solid fa-landmark"></i></div>
+                        <h6>Gobierno Regional</h6>
+                        <small class="text-secondary">Cusco</small>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
-                    <div class="testimonial-card">
-                        <i class="fa-solid fa-quote-left text-info fs-2 mb-3"></i>
-                        <p class="quote">"El enfoque intercultural con soporte en quechua hace que esta solución sea única y realmente inclusiva."</p>
-                        <p class="author">— Comunidad de San Sebastián, Cusco</p>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="ally-card">
+                        <div class="ally-icon"><i class="fa-solid fa-university"></i></div>
+                        <h6>Universidad Continental</h6>
+                        <small class="text-secondary">EAP Sistemas</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="ally-card">
+                        <div class="ally-icon"><i class="fa-brands fa-google"></i></div>
+                        <h6>Google</h6>
+                        <small class="text-secondary">Gemini API</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== SECCIÓN DE DESCARGA ========== -->
+    <!-- FAQ -->
     <section class="py-5">
         <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Información</span>
+                <h2 class="display-5 fw-bold">Preguntas <span class="gradient-text">Frecuentes</span></h2>
+            </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <h3 class="fw-bold">Descarga nuestra <span class="gradient-text">documentación</span></h3>
-                    <p class="text-secondary mb-4">Conoce más detalles técnicos de nuestros proyectos</p>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <button onclick="descargarPDF('WasiQhari')" class="btn btn-gradient">
-                            <i class="fa-solid fa-file-pdf me-2"></i>WasiQhari - Ficha Técnica
-                        </button>
-                        <button onclick="descargarPDF('Allin Yachay')" class="btn btn-outline-custom">
-                            <i class="fa-solid fa-file-pdf me-2"></i>Allin Yachay - Ficha Técnica
-                        </button>
+                <div class="col-lg-8">
+                    <div class="faq-item" data-aos="fade-up">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Qué es S.O.L. Tech?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            S.O.L. Tech (Soluciones On-Line Tecnológicas) es una organización juvenil fundada el 10 de noviembre de 2025 en Cusco, dedicada a desarrollar tecnología de vanguardia para resolver problemáticas sociales.
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Cómo puedo ser voluntario?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Puedes contactarnos a través del formulario de contacto o enviarnos un correo. Buscamos personas apasionadas por la tecnología y el impacto social.
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Dónde puedo ver WasiQhari en acción?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Actualmente estamos realizando pruebas piloto en el Hospital Regional del Cusco y en distritos como San Sebastián y Santiago.
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Qué ODS impactan sus proyectos?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            WasiQhari impacta los ODS 3 (Salud), 10 (Desigualdades) y 11 (Ciudades). Allin Yachay Nexus impacta los ODS 4 (Educación), 9 (Innovación) y 10 (Desigualdades).
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== NEWSLETTER ========== -->
-    <section class="py-5" style="background: rgba(0,0,0,0.2);">
+    <!-- Newsletter -->
+    <section class="py-5" style="background: rgba(0,0,0,0.15);">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
                     <h3 class="fw-bold">Únete a <span class="gradient-text">nuestra comunidad</span></h3>
-                    <p class="text-secondary mb-4">Recibe noticias sobre nuestros proyectos y oportunidades de voluntariado</p>
+                    <p class="text-secondary mb-4">Recibe noticias sobre nuestros proyectos y oportunidades</p>
                     <div class="d-flex flex-wrap justify-content-center gap-2">
                         <input type="email" id="newsletterEmail" class="form-control w-auto" style="min-width: 250px; background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 12px; padding: 12px 20px;" placeholder="Tu correo electrónico">
                         <button onclick="suscribirse()" class="btn btn-gradient">
@@ -1366,7 +1456,7 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contacto" class="py-5 border-top border-secondary mt-5" style="background: #05080e;">
+    <footer id="contacto" class="py-5 border-top border-secondary" style="background: #05080e;">
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
                 <div class="col-md-6 mb-3 mb-md-0">
@@ -1382,7 +1472,7 @@
                         <i class="fa-brands fa-linkedin-in"></i>
                     </a>
                     <button onclick="contactarModal()" class="btn btn-gradient btn-sm">
-                        <i class="fa-solid fa-envelope me-1"></i> Contactar Equipo
+                        <i class="fa-solid fa-envelope me-1"></i> Contactar
                     </button>
                 </div>
             </div>
@@ -1391,12 +1481,12 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top -->
+    <!-- Scroll Top -->
     <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Chatbot Flotante -->
+    <!-- Chatbot -->
     <button class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">
         <span class="pulse-ring"></span>
         <i class="fa-solid fa-robot"></i>
@@ -1427,13 +1517,14 @@
 
     <script>
         // =============================================
-        // 1. PARTÍCULAS DE FONDO
+        // 1. PARTÍCULAS INTERACTIVAS
         // =============================================
         (function() {
             const canvas = document.getElementById('particles-canvas');
             const ctx = canvas.getContext('2d');
             let width, height;
             let particles = [];
+            let mouse = { x: null, y: null };
 
             function resize() {
                 width = window.innerWidth;
@@ -1444,15 +1535,31 @@
             window.addEventListener('resize', resize);
             resize();
 
+            canvas.addEventListener('mousemove', function(e) {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            });
+
             class Particle {
                 constructor() {
                     this.x = Math.random() * width;
                     this.y = Math.random() * height;
                     this.size = Math.random() * 2 + 0.5;
-                    this.speedX = (Math.random() - 0.5) * 0.5;
-                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.3;
+                    this.speedY = (Math.random() - 0.5) * 0.3;
                 }
                 update() {
+                    // Atracción al mouse
+                    if (mouse.x !== null) {
+                        const dx = mouse.x - this.x;
+                        const dy = mouse.y - this.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        if (distance < 150) {
+                            const force = (150 - distance) / 150 * 0.5;
+                            this.x += (dx / distance) * force;
+                            this.y += (dy / distance) * force;
+                        }
+                    }
                     this.x += this.speedX;
                     this.y += this.speedY;
                     if (this.x > width) this.x = 0;
@@ -1468,7 +1575,7 @@
                 }
             }
 
-            function initParticles(count = 120) {
+            function initParticles(count = 150) {
                 for (let i = 0; i < count; i++) {
                     particles.push(new Particle());
                 }
@@ -1513,7 +1620,7 @@
         });
 
         // =============================================
-        // 3. LÍNEAS DE CÓDIGO (Métrica Geek)
+        // 3. LÍNEAS DE CÓDIGO Y VISITAS
         // =============================================
         function animateLinesOfCode() {
             const target = 15247;
@@ -1531,10 +1638,22 @@
             };
             update();
         }
+
+        function updateVisitCounter() {
+            let visits = localStorage.getItem('solTechVisits');
+            if (!visits) {
+                visits = 0;
+            }
+            visits = parseInt(visits) + 1;
+            localStorage.setItem('solTechVisits', visits);
+            document.getElementById('visitCounter').textContent = visits;
+        }
+
         setTimeout(animateLinesOfCode, 1000);
+        updateVisitCounter();
 
         // =============================================
-        // 4. MAPA INTERACTIVO
+        // 4. MAPA
         // =============================================
         document.addEventListener('DOMContentLoaded', function() {
             const map = L.map('wasiqhari-map').setView([-13.53195, -71.96746], 13);
@@ -1562,97 +1681,19 @@
                 const marker = L.marker([z.lat, z.lng], { icon: pulsarIcon }).addTo(map);
                 marker.bindPopup(`
                     <b>${z.nombre}</b><br>
-                    <span class="badge ${z.riesgo === 'Alto' ? 'bg-danger' : z.riesgo === 'Medio' ? 'bg-warning' : 'bg-success'}">Riesgo ${z.riesgo}</span><br>
-                    <small>Nivel de vulnerabilidad analizado por IA</small>
+                    <span class="badge ${z.riesgo === 'Alto' ? 'bg-danger' : z.riesgo === 'Medio' ? 'bg-warning' : 'bg-success'}">Riesgo ${z.riesgo}</span>
                 `);
             });
         });
 
         // =============================================
-        // 5. GRÁFICOS CON CHART.JS
-        // =============================================
-        document.addEventListener('DOMContentLoaded', function() {
-            // Gráfico de ODS
-            const ctx1 = document.getElementById('odsChart').getContext('2d');
-            new Chart(ctx1, {
-                type: 'bar',
-                data: {
-                    labels: ['ODS 3', 'ODS 4', 'ODS 9', 'ODS 10', 'ODS 11'],
-                    datasets: [{
-                        label: 'Nivel de Impacto',
-                        data: [85, 75, 70, 90, 80],
-                        backgroundColor: [
-                            'rgba(6, 182, 212, 0.7)',
-                            'rgba(139, 92, 246, 0.7)',
-                            'rgba(236, 72, 153, 0.7)',
-                            'rgba(251, 191, 36, 0.7)',
-                            'rgba(52, 211, 153, 0.7)'
-                        ],
-                        borderColor: [
-                            '#06b6d4', '#8b5cf6', '#ec4899', '#fbbf24', '#34d399'
-                        ],
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            grid: { color: 'rgba(255,255,255,0.05)' },
-                            ticks: { color: 'rgba(255,255,255,0.5)' }
-                        },
-                        x: {
-                            grid: { display: false },
-                            ticks: { color: 'rgba(255,255,255,0.5)' }
-                        }
-                    }
-                }
-            });
-
-            // Gráfico de distritos
-            const ctx2 = document.getElementById('districtsChart').getContext('2d');
-            new Chart(ctx2, {
-                type: 'doughnut',
-                data: {
-                    labels: ['San Sebastián', 'Santiago', 'San Jerónimo', 'Centro', 'Wanchaq'],
-                    datasets: [{
-                        data: [35, 25, 20, 12, 8],
-                        backgroundColor: [
-                            '#8b5cf6', '#06b6d4', '#ec4899', '#fbbf24', '#34d399'
-                        ],
-                        borderColor: 'rgba(9,13,22,0.8)',
-                        borderWidth: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: 'rgba(255,255,255,0.7)',
-                                padding: 15
-                            }
-                        }
-                    }
-                }
-            });
-        });
-
-        // =============================================
-        // 6. CHATBOT CON GEMINI API
+        // 5. CHATBOT
         // =============================================
         const API_KEY = "TU_API_KEY_DE_GEMINI";
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
         function toggleChatbot() {
-            const window = document.getElementById('chatbotWindow');
-            window.classList.toggle('active');
+            document.getElementById('chatbotWindow').classList.toggle('active');
         }
 
         async function sendMessage() {
@@ -1674,10 +1715,9 @@
 
             try {
                 const systemPrompt = `Eres el asistente virtual de S.O.L. Tech (Soluciones On-Line Tecnológicas), una organización juvenil de Cusco fundada el 10/11/2025. 
-                Tus proyectos principales son:
-                1. WasiQhari (lanzado 17/11/2025): Plataforma de monitoreo y asistencia para adultos mayores vulnerables usando IoT y geolocalización. Impacta ODS 3, 10 y 11.
-                2. Allin Yachay Nexus (lanzado Jun 2026): Ecosistema educativo con IA para prevenir deserción estudiantil, con soporte en quechua. Impacta ODS 4, 9 y 10.
-                Responde siempre de manera amable, profesional y breve (máx 150 palabras).`;
+                Logros: Alianza con Hospital Regional (R.D. N° 160-2026), Gobierno Regional, FabLab Fellowship UC, Premio Nacional Juventud (postulación), Global Youth Mobilization.
+                Proyectos: WasiQhari (17/11/2025, ODS 3,10,11) y Allin Yachay Nexus (Jun 2026, ODS 4,9,10).
+                Responde breve y profesional.`;
 
                 const response = await fetch(API_URL, {
                     method: 'POST',
@@ -1687,16 +1727,13 @@
                             { role: "user", parts: [{ text: systemPrompt }] },
                             { role: "user", parts: [{ text: msg }] }
                         ],
-                        generationConfig: {
-                            temperature: 0.7,
-                            maxOutputTokens: 200
-                        }
+                        generationConfig: { temperature: 0.7, maxOutputTokens: 200 }
                     })
                 });
 
                 const data = await response.json();
                 const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 
-                             "Lo siento, no pude procesar tu consulta. ¿Podrías intentar de nuevo?";
+                             "Lo siento, no pude procesar tu consulta.";
 
                 document.getElementById('loadingMsg').remove();
                 messagesContainer.innerHTML += `<div class="message bot">${reply}</div>`;
@@ -1704,19 +1741,25 @@
 
             } catch (error) {
                 document.getElementById('loadingMsg').remove();
-                messagesContainer.innerHTML += `<div class="message bot">⚠️ Error de conexión con la IA. Intenta más tarde.</div>`;
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                console.error('Error en Gemini API:', error);
+                messagesContainer.innerHTML += `<div class="message bot">⚠️ Error de conexión.</div>`;
             }
         }
 
         // =============================================
-        // 7. FUNCIONES INTERACTIVAS
+        // 6. FAQ INTERACTIVA
+        // =============================================
+        function toggleFAQ(element) {
+            const item = element.closest('.faq-item');
+            item.classList.toggle('active');
+        }
+
+        // =============================================
+        // 7. FUNCIONES SWEETALERT
         // =============================================
         function verDemoInfo() {
             Swal.fire({
                 title: 'Visión S.O.L. Tech',
-                text: 'Combinamos software, hardware y pensamiento altruista para construir soluciones digitales públicas que protejan a los más vulnerables.',
+                text: 'Combinamos software, hardware y pensamiento altruista para construir soluciones digitales que protejan a los más vulnerables.',
                 icon: 'info',
                 background: '#141b2c',
                 color: '#fff',
@@ -1726,18 +1769,12 @@
 
         function infoWasiQhari() {
             Swal.fire({
-                title: 'WasiQhari - Arquitectura',
+                title: 'WasiQhari',
                 html: `<div class="text-start">
-                    <p><b>📅 Lanzamiento:</b> 17 de noviembre de 2025</p>
-                    <p><b>🎯 ODS:</b> 3, 10, 11</p>
-                    <p><b>Componentes Clave:</b></p>
-                    <ul>
-                        <li>Procesamiento de triaje con IA.</li>
-                        <li>Mapeo interactivo en tiempo real (Leaflet).</li>
-                        <li>Listas de Control de Acceso (ACL).</li>
-                        <li>Integración con sensores IoT (ESP32).</li>
-                    </ul>
-                    <p><b>Tecnologías:</b> Laravel, MySQL, Bootstrap, JavaScript, APIs</p>
+                    <p><b>Lanzamiento:</b> 17/11/2025</p>
+                    <p><b>ODS:</b> 3, 10, 11</p>
+                    <p><b>Tecnologías:</b> Laravel, MySQL, IoT (ESP32)</p>
+                    <p><b>Aliados:</b> Hospital Regional (R.D. N° 160-2026)</p>
                 </div>`,
                 icon: 'success',
                 background: '#141b2c',
@@ -1748,18 +1785,12 @@
 
         function infoNexus() {
             Swal.fire({
-                title: 'Allin Yachay Nexus - Arquitectura',
+                title: 'Allin Yachay Nexus',
                 html: `<div class="text-start">
-                    <p><b>📅 Lanzamiento:</b> Junio 2026</p>
-                    <p><b>🎯 ODS:</b> 4, 9, 10</p>
-                    <p><b>Componentes Clave:</b></p>
-                    <ul>
-                        <li>Motor de IA basado en Gemini API.</li>
-                        <li>Soporte intercultural Español - Quechua.</li>
-                        <li>Algoritmo propio: Yachay Score.</li>
-                        <li>Dashboard de métricas institucionales.</li>
-                    </ul>
-                    <p><b>Tecnologías:</b> Node.js, PHP, Gemini API, Bootstrap, MySQL</p>
+                    <p><b>Lanzamiento:</b> Junio 2026</p>
+                    <p><b>ODS:</b> 4, 9, 10</p>
+                    <p><b>Tecnologías:</b> Node.js, Gemini API, PHP</p>
+                    <p><b>Soporte:</b> Español y Quechua</p>
                 </div>`,
                 icon: 'success',
                 background: '#141b2c',
@@ -1771,24 +1802,11 @@
         function verCaptura(titulo) {
             Swal.fire({
                 title: titulo,
-                text: 'Esta es una captura de pantalla de nuestro sistema en funcionamiento.',
+                text: 'Captura de pantalla de nuestro sistema en funcionamiento.',
                 icon: 'info',
                 background: '#141b2c',
                 color: '#fff',
                 confirmButtonColor: '#8b5cf6'
-            });
-        }
-
-        function descargarPDF(proyecto) {
-            Swal.fire({
-                title: `📄 Descargando ${proyecto}`,
-                text: `La ficha técnica de ${proyecto} se descargará en breve.`,
-                icon: 'info',
-                background: '#141b2c',
-                color: '#fff',
-                confirmButtonColor: '#8b5cf6',
-                timer: 2000,
-                timerProgressBar: true
             });
         }
 
@@ -1797,7 +1815,7 @@
             if (!email || !email.includes('@')) {
                 Swal.fire({
                     title: 'Error',
-                    text: 'Por favor, ingresa un correo electrónico válido.',
+                    text: 'Ingresa un correo válido.',
                     icon: 'error',
                     background: '#141b2c',
                     color: '#fff'
@@ -1806,7 +1824,7 @@
             }
             Swal.fire({
                 title: '¡Suscripción exitosa!',
-                text: 'Gracias por unirte a nuestra comunidad. Recibirás nuestras novedades pronto.',
+                text: 'Gracias por unirte a nuestra comunidad.',
                 icon: 'success',
                 background: '#141b2c',
                 color: '#fff',
@@ -1817,10 +1835,9 @@
 
         function contactarModal() {
             Swal.fire({
-                title: '¡Ponte en contacto!',
-                text: 'Escríbenos a nuestro canal oficial para convenios, voluntariado o alianzas estratégicas.',
+                title: '¡Contáctanos!',
                 input: 'email',
-                inputPlaceholder: 'Ingresa tu correo electrónico',
+                inputPlaceholder: 'Tu correo electrónico',
                 showCancelButton: true,
                 confirmButtonText: 'Enviar',
                 background: '#141b2c',
@@ -1830,7 +1847,7 @@
                 if (result.isConfirmed) {
                     Swal.fire({
                         title: '¡Mensaje Recibido!',
-                        text: 'El equipo de S.O.L. Tech se pondrá en contacto pronto.',
+                        text: 'Te contactaremos pronto.',
                         icon: 'success',
                         background: '#141b2c',
                         color: '#fff'
@@ -1840,27 +1857,33 @@
         }
 
         // =============================================
-        // 8. MODO OSCURO/CLARO
+        // 8. MODO OSCURO/CLARO PERSISTENTE
         // =============================================
-        let currentTheme = 'dark';
+        let currentTheme = localStorage.getItem('solTechTheme') || 'dark';
 
-        function toggleTheme() {
+        function applyTheme(theme) {
             const html = document.documentElement;
             const icon = document.getElementById('themeIcon');
-            
-            if (currentTheme === 'dark') {
+            if (theme === 'light') {
                 html.setAttribute('data-theme', 'light');
                 icon.className = 'fa-solid fa-sun';
-                currentTheme = 'light';
             } else {
                 html.removeAttribute('data-theme');
                 icon.className = 'fa-solid fa-moon';
-                currentTheme = 'dark';
             }
+            currentTheme = theme;
+            localStorage.setItem('solTechTheme', theme);
         }
 
+        function toggleTheme() {
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+        }
+
+        applyTheme(currentTheme);
+
         // =============================================
-        // 9. SCROLL TO TOP
+        // 9. SCROLL TOP
         // =============================================
         window.addEventListener('scroll', function() {
             const btn = document.getElementById('scrollTopBtn');
