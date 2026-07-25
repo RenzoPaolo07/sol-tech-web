@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Leaflet CSS (Para el mapa) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -23,6 +25,12 @@
             --text-main: #f8fafc;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
@@ -30,43 +38,56 @@
             overflow-x: hidden;
         }
 
-        /* Glassmorphism Navbar */
+        /* Efecto de partículas (estrellas) en el fondo */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
         .navbar-custom {
             background: rgba(9, 13, 22, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 1030;
         }
 
         .gradient-text {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Hero Section */
         .hero-section {
-            padding: 140px 0 90px;
+            padding: 160px 0 90px;
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero-section::before {
             content: '';
             position: absolute;
-            top: 20%;
+            top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(6, 182, 212, 0) 70%);
-            filter: blur(60px);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(6, 182, 212, 0) 70%);
+            filter: blur(80px);
             z-index: -1;
         }
 
-        /* Cards Design */
         .glass-card {
             background: var(--card-bg);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -80,25 +101,23 @@
         .star-badge {
             background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
             color: #fff;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 800;
-            padding: 5px 12px;
+            padding: 5px 14px;
             border-radius: 50px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Custom Buttons */
         .btn-gradient {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             color: #fff;
             border: none;
             border-radius: 12px;
             font-weight: 700;
-            padding: 12px 28px;
+            padding: 12px 32px;
             transition: all 0.3s ease;
         }
-
         .btn-gradient:hover {
             opacity: 0.9;
             transform: scale(1.03);
@@ -114,7 +133,6 @@
             font-weight: 600;
             transition: all 0.3s ease;
         }
-
         .btn-outline-custom:hover {
             background: rgba(255, 255, 255, 0.1);
             color: var(--accent-cyan);
@@ -122,15 +140,298 @@
         }
 
         .tech-icon {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 15px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Tarjetas del equipo */
+        .team-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+        }
+        .team-card .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            padding: 3px;
+            transition: all 0.4s ease;
+        }
+        .team-card .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--bg-dark);
+            transition: all 0.4s ease;
+        }
+        .team-card:hover .avatar {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+        .team-card .social-links a {
+            color: rgba(255,255,255,0.5);
+            font-size: 1.2rem;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+        .team-card .social-links a:hover {
+            color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
+
+        /* Estilos del Chatbot Flotante */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1050;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.5);
+        }
+        .chatbot-toggle .pulse-ring {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid rgba(6, 182, 212, 0.3);
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            z-index: 1040;
+            width: 380px;
+            max-width: 90vw;
+            height: 500px;
+            max-height: 70vh;
+            background: rgba(20, 27, 44, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .chatbot-window.active {
+            display: flex;
+        }
+        .chatbot-header {
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chatbot-header h6 {
+            margin: 0;
+            font-weight: 700;
+        }
+        .chatbot-header .close-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .chatbot-header .close-btn:hover {
+            color: #fff;
+            transform: rotate(90deg);
+        }
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chatbot-messages .message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            animation: fadeInUp 0.3s ease;
+        }
+        .chatbot-messages .message.bot {
+            background: rgba(255,255,255,0.08);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .chatbot-messages .message.user {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chatbot-input {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            gap: 10px;
+            background: rgba(0,0,0,0.2);
+        }
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .chatbot-input input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+        }
+        .chatbot-input input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        .chatbot-input button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .chatbot-input button:hover {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mapa */
+        #wasiqhari-map {
+            height: 400px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+        .leaflet-popup-content-wrapper {
+            background: var(--card-bg) !important;
+            color: #fff !important;
+            backdrop-filter: blur(12px);
+            border-radius: 12px !important;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .leaflet-popup-tip {
+            background: var(--card-bg) !important;
+        }
+        .leaflet-control-zoom a {
+            background: var(--card-bg) !important;
+            color: #fff !important;
+            border-color: rgba(255,255,255,0.08) !important;
+        }
+
+        /* Scrollbar personalizado */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-purple);
+            border-radius: 10px;
+        }
+
+        /* Diagrama de arquitectura */
+        .arch-diagram {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .arch-node {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+        .arch-node:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+        .arch-node .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 1.5rem;
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+        }
+        .arch-arrow {
+            color: rgba(255,255,255,0.2);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
+
+    <!-- Canvas para partículas de fondo -->
+    <canvas id="particles-canvas"></canvas>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
@@ -142,10 +443,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto gap-3 text-center py-3 py-lg-0">
+                <ul class="navbar-nav ms-auto gap-2 gap-lg-3 text-center py-3 py-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos Estrella</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
                     <li class="nav-item"><a class="btn btn-gradient btn-sm px-3 mt-2 mt-lg-0" href="#contacto">Contacto</a></li>
                 </ul>
             </div>
@@ -161,8 +464,9 @@
             <h1 class="display-3 fw-bold mb-4">
                 Ingeniería, IA & Hardware <br>para <span class="gradient-text">Transformar el Mundo</span>
             </h1>
-            <p class="lead text-secondary max-width-700 mx-auto mb-5" style="max-width: 700px;">
-                Somos una organización juvenil de Cusco dedicada a crear plataformas web de alto impacto, soluciones con Inteligencia Artificial e integración de sistemas hardware para resolver problemáticas sociales reales.
+            <p class="lead text-secondary mx-auto mb-5" style="max-width: 700px;">
+                Somos una organización juvenil de Cusco dedicada a crear plataformas web de alto impacto, 
+                soluciones con Inteligencia Artificial e integración de sistemas hardware para resolver problemáticas sociales reales.
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <a href="#proyectos" class="btn btn-gradient">Explorar Proyectos</a>
@@ -181,7 +485,8 @@
                     <span class="text-info fw-bold text-uppercase">Nuestra Misión</span>
                     <h2 class="display-5 fw-bold mb-4">Donde existe un problema, <span class="gradient-text">creamos tecnología</span></h2>
                     <p class="text-secondary">
-                        S.O.L. Tech (Soluciones On-Line Tecnológicas) nace de la convicción de que la tecnología de frontera no debe ser exclusiva del sector corporativo, sino un puente directo para el desarrollo humano y la equidad social.
+                        S.O.L. Tech (Soluciones On-Line Tecnológicas) nace de la convicción de que la tecnología de frontera 
+                        no debe ser exclusiva del sector corporativo, sino un puente directo para el desarrollo humano y la equidad social.
                     </p>
                     <div class="row g-3 mt-2">
                         <div class="col-6">
@@ -234,6 +539,52 @@
         </div>
     </section>
 
+    <!-- Arquitectura / Infografía -->
+    <section id="arquitectura" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Backend & Frontend</span>
+                <h2 class="display-5 fw-bold">Nuestra <span class="gradient-text">Arquitectura</span></h2>
+                <p class="text-secondary">Flujo de datos desde el hardware hasta el dashboard del usuario</p>
+            </div>
+            <div class="arch-diagram" data-aos="fade-up">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-3">
+                        <div class="arch-node">
+                            <div class="icon-circle"><i class="fa-solid fa-microchip"></i></div>
+                            <h6 class="fw-bold">Hardware IoT</h6>
+                            <small class="text-secondary">ESP32, Sensores</small>
+                        </div>
+                    </div>
+                    <div class="col-md-1 arch-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="col-md-3">
+                        <div class="arch-node">
+                            <div class="icon-circle"><i class="fa-solid fa-database"></i></div>
+                            <h6 class="fw-bold">API REST</h6>
+                            <small class="text-secondary">Node.js / PHP</small>
+                        </div>
+                    </div>
+                    <div class="col-md-1 arch-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="col-md-4">
+                        <div class="arch-node">
+                            <div class="icon-circle"><i class="fa-solid fa-display"></i></div>
+                            <h6 class="fw-bold">Frontend + Dashboard</h6>
+                            <small class="text-secondary">Bootstrap, JS, Leaflet</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <span class="badge bg-dark border border-secondary px-3 py-2">
+                        <i class="fa-brands fa-laravel me-2 text-danger"></i>Laravel
+                        <i class="fa-brands fa-node-js ms-3 me-2 text-success"></i>Node.js
+                        <i class="fa-solid fa-cloud ms-3 me-2 text-info"></i>Gemini API
+                        <i class="fa-solid fa-database ms-3 me-2 text-warning"></i>MySQL
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Proyectos Estrella -->
     <section id="proyectos" class="py-5">
         <div class="container">
@@ -253,7 +604,7 @@
                             </div>
                             <h3 class="fw-bold mb-2">WasiQhari</h3>
                             <p class="text-secondary small">
-                                Plataforma de gestión georreferenciada para la asistencia social. Utiliza algoritmos de IA para el triaje automatizado de vulnerabilidad y mapeo interactivo en tiempo real, agilizando la llegada de ayuda a quienes más lo necesitan.
+                                Plataforma de gestión georreferenciada para la asistencia social. Utiliza algoritmos de IA para el triaje automatizado de vulnerabilidad y mapeo interactivo en tiempo real.
                             </p>
                             <div class="d-flex gap-2 flex-wrap mb-4">
                                 <span class="badge bg-dark border border-secondary">Triaje IA</span>
@@ -277,7 +628,8 @@
                             </div>
                             <h3 class="fw-bold mb-2">Allin Yachay Nexus</h3>
                             <p class="text-secondary small">
-                                Ecosistema inteligente enfocado en la prevención de la deserción estudiantil universitaria. Integra analítica predictiva, tutoría adaptativa con IA y soporte bilingüe en Español y Quechua.
+                                Ecosistema inteligente enfocado en la prevención de la deserción estudiantil universitaria. 
+                                Integra analítica predictiva, tutoría adaptativa con IA y soporte bilingüe (Español/Quechua).
                             </p>
                             <div class="d-flex gap-2 flex-wrap mb-4">
                                 <span class="badge bg-dark border border-secondary">Gemini API</span>
@@ -294,6 +646,79 @@
         </div>
     </section>
 
+    <!-- Equipo (Trío Dinámico) -->
+    <section id="equipo" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Talento Joven</span>
+                <h2 class="display-5 fw-bold">El <span class="gradient-text">Trío Dinámico</span></h2>
+                <p class="text-secondary">Los genios detrás del código y la innovación</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Renzo -->
+                <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="team-card">
+                        <div class="avatar">
+                            <img src="https://ui-avatars.com/api/?name=Renzo+Costa&background=8b5cf6&color=fff&size=120&font-size=0.5" alt="Renzo Costa">
+                        </div>
+                        <h5 class="fw-bold">Renzo Costa Paucarmayta</h5>
+                        <p class="text-info small fw-bold">Lead Developer & Founder</p>
+                        <p class="text-secondary small">Arquitecto de soluciones full-stack. Apasionado por la IA y el IoT.</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/renzo-paolo-costa-paucarmayta-5072301ba/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-github"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Brian -->
+                <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="team-card">
+                        <div class="avatar">
+                            <img src="https://ui-avatars.com/api/?name=Brian+Villavicencio&background=06b6d4&color=fff&size=120&font-size=0.5" alt="Brian Villavicencio">
+                        </div>
+                        <h5 class="fw-bold">Brian Villavicencio</h5>
+                        <p class="text-info small fw-bold">Data Scientist & Backend</p>
+                        <p class="text-secondary small">Especialista en análisis predictivo y modelos de machine learning.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-github"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Shara -->
+                <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="team-card">
+                        <div class="avatar">
+                            <img src="https://ui-avatars.com/api/?name=Shara+Trinidad&background=ec4899&color=fff&size=120&font-size=0.5" alt="Shara Trinidad">
+                        </div>
+                        <h5 class="fw-bold">Shara Betzabeht Trinidad</h5>
+                        <p class="text-info small fw-bold">UI/UX & Hardware Engineer</p>
+                        <p class="text-secondary small">Diseño de experiencias inclusivas e integración de sensores IoT.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-github"></i></a>
+                            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa Interactivo (WasiQhari) -->
+    <section id="mapa" class="py-5">
+        <div class="container">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Geolocalización</span>
+                <h2 class="display-5 fw-bold">Mapa de <span class="gradient-text">Intervención Social</span></h2>
+                <p class="text-secondary">Zonas de vulnerabilidad detectadas por nuestro sistema en Cusco</p>
+            </div>
+            <div id="wasiqhari-map" data-aos="fade-up"></div>
+        </div>
+    </section>
+
     <!-- Footer / Contacto -->
     <footer id="contacto" class="py-5 border-top border-secondary mt-5" style="background: #05080e;">
         <div class="container">
@@ -303,8 +728,11 @@
                     <p class="text-secondary small mb-0">Soluciones On-Line Tecnológicas — Cusco, Perú.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="https://facebook.com" target="_blank" class="btn btn-outline-custom btn-sm me-2">
+                    <a href="https://www.facebook.com/people/SOL-Tech/61592034006842/" target="_blank" class="btn btn-outline-custom btn-sm me-2">
                         <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/renzo-paolo-costa-paucarmayta-5072301ba/" target="_blank" class="btn btn-outline-custom btn-sm me-2">
+                        <i class="fa-brands fa-linkedin-in"></i>
                     </a>
                     <button onclick="contactarModal()" class="btn btn-gradient btn-sm">
                         <i class="fa-solid fa-envelope me-1"></i> Contactar Equipo
@@ -316,21 +744,204 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5.3 JS -->
+    <!-- Chatbot Flotante -->
+    <button class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">
+        <span class="pulse-ring"></span>
+        <i class="fa-solid fa-robot"></i>
+    </button>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <h6><i class="fa-solid fa-brain me-2 text-info"></i>Asistente S.O.L. Tech</h6>
+            <button class="close-btn" onclick="toggleChatbot()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot">
+                <i class="fa-solid fa-robot me-2 text-info"></i>
+                ¡Hola! Soy el asistente de S.O.L. Tech. Pregúntame sobre WasiQhari, Allin Yachay o nuestra misión en Cusco.
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Escribe tu pregunta..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-        // Inicializar animaciones de desplazamiento
-        AOS.init({
-            duration: 800,
-            once: true
+        // =============================================
+        // 1. PARTÍCULAS DE FONDO (Estrellas)
+        // =============================================
+        (function() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x > width) this.x = 0;
+                    if (this.x < 0) this.x = width;
+                    if (this.y > height) this.y = 0;
+                    if (this.y < 0) this.y = height;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.5 + 0.2})`;
+                    ctx.fill();
+                }
+            }
+
+            function initParticles(count = 120) {
+                for (let i = 0; i < count; i++) {
+                    particles.push(new Particle());
+                }
+            }
+            initParticles();
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+        })();
+
+        // =============================================
+        // 2. MAPA INTERACTIVO (Leaflet)
+        // =============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const map = L.map('wasiqhari-map').setView([-13.53195, -71.96746], 13);
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; CartoDB'
+            }).addTo(map);
+
+            // Datos de zonas de intervención (simulados)
+            const zonas = [
+                { lat: -13.525, lng: -71.980, nombre: 'Santiago', riesgo: 'Alto' },
+                { lat: -13.545, lng: -71.955, nombre: 'San Sebastián', riesgo: 'Medio' },
+                { lat: -13.515, lng: -71.975, nombre: 'Centro Histórico', riesgo: 'Bajo' },
+                { lat: -13.560, lng: -71.970, nombre: 'San Jerónimo', riesgo: 'Alto' },
+                { lat: -13.535, lng: -71.940, nombre: 'Wanchaq', riesgo: 'Medio' },
+            ];
+
+            // Icono personalizado con pulso
+            const pulsarIcon = L.divIcon({
+                className: 'custom-pulse-icon',
+                html: `<div style="width:20px;height:20px;background:#8b5cf6;border-radius:50%;box-shadow:0 0 0 0 rgba(139,92,246,0.7);animation:pulse 1.5s infinite;border:2px solid #fff;"></div>
+                       <style>@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(139,92,246,0.7);}70%{box-shadow:0 0 0 15px rgba(139,92,246,0);}100%{box-shadow:0 0 0 0 rgba(139,92,246,0);}}</style>`,
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+            });
+
+            zonas.forEach(z => {
+                const marker = L.marker([z.lat, z.lng], { icon: pulsarIcon }).addTo(map);
+                marker.bindPopup(`
+                    <b>${z.nombre}</b><br>
+                    <span class="badge ${z.riesgo === 'Alto' ? 'bg-danger' : z.riesgo === 'Medio' ? 'bg-warning' : 'bg-success'}">Riesgo ${z.riesgo}</span><br>
+                    <small>Nivel de vulnerabilidad analizado por IA</small>
+                `);
+            });
         });
 
-        // Funciones interactivas con SweetAlert2
+        // =============================================
+        // 3. CHATBOT CON GEMINI API
+        // =============================================
+        const API_KEY = "TU_API_KEY_DE_GEMINI"; // <-- REEMPLAZA CON TU CLAVE REAL
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+
+        function toggleChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            window.classList.toggle('active');
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+            input.value = '';
+
+            const messagesContainer = document.getElementById('chatbotMessages');
+            messagesContainer.innerHTML += `<div class="message user">${msg}</div>`;
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            // Mostrar indicador de escritura
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'message bot';
+            loadingDiv.id = 'loadingMsg';
+            loadingDiv.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Pensando...';
+            messagesContainer.appendChild(loadingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            try {
+                // Contexto del sistema para el asistente
+                const systemPrompt = `Eres el asistente virtual de S.O.L. Tech (Soluciones On-Line Tecnológicas), una organización juvenil de Cusco que desarrolla tecnología con impacto social. 
+                Tus proyectos principales son:
+                1. WasiQhari: Plataforma de monitoreo y asistencia para adultos mayores vulnerables usando IoT y geolocalización.
+                2. Allin Yachay Nexus: Ecosistema educativo con IA para prevenir deserción estudiantil, con soporte en quechua.
+                Responde siempre de manera amable, profesional y breve (máx 150 palabras). Si te preguntan sobre tecnología, da detalles técnicos con confianza.`;
+
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [
+                            { role: "user", parts: [{ text: systemPrompt }] },
+                            { role: "user", parts: [{ text: msg }] }
+                        ],
+                        generationConfig: {
+                            temperature: 0.7,
+                            maxOutputTokens: 200
+                        }
+                    })
+                });
+
+                const data = await response.json();
+                const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 
+                             "Lo siento, no pude procesar tu consulta. ¿Podrías intentar de nuevo?";
+
+                document.getElementById('loadingMsg').remove();
+                messagesContainer.innerHTML += `<div class="message bot">${reply}</div>`;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            } catch (error) {
+                document.getElementById('loadingMsg').remove();
+                messagesContainer.innerHTML += `<div class="message bot">⚠️ Error de conexión con la IA. Intenta más tarde.</div>`;
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                console.error('Error en Gemini API:', error);
+            }
+        }
+
+        // =============================================
+        // 4. FUNCIONES INTERACTIVAS (SweetAlert)
+        // =============================================
         function verDemoInfo() {
             Swal.fire({
                 title: 'Visión S.O.L. Tech',
@@ -345,7 +956,16 @@
         function infoWasiQhari() {
             Swal.fire({
                 title: 'WasiQhari - Arquitectura',
-                html: '<div class="text-start"><p><b>Componentes Clave:</b></p><ul><li>Procesamiento de triaje con IA.</li><li>Mapeo interactivo en tiempo real.</li><li>Listas de Control de Acceso (ACL).</li><li>Diseño adaptable para teléfonos móviles.</li></ul></div>',
+                html: `<div class="text-start">
+                    <p><b>Componentes Clave:</b></p>
+                    <ul>
+                        <li>Procesamiento de triaje con IA.</li>
+                        <li>Mapeo interactivo en tiempo real (Leaflet).</li>
+                        <li>Listas de Control de Acceso (ACL).</li>
+                        <li>Integración con sensores IoT (ESP32).</li>
+                    </ul>
+                    <p><b>Tecnologías:</b> Laravel, MySQL, Bootstrap, JavaScript, APIs</p>
+                </div>`,
                 icon: 'success',
                 background: '#141b2c',
                 color: '#fff',
@@ -356,7 +976,16 @@
         function infoNexus() {
             Swal.fire({
                 title: 'Allin Yachay Nexus - Arquitectura',
-                html: '<div class="text-start"><p><b>Componentes Clave:</b></p><ul><li>Motor de IA basado en Gemini API.</li><li>Soporte intercultural Español - Quechua.</li><li>Algoritmo propio: Yachay Score.</li><li>Dashboard de métricas institucionales.</li></ul></div>',
+                html: `<div class="text-start">
+                    <p><b>Componentes Clave:</b></p>
+                    <ul>
+                        <li>Motor de IA basado en Gemini API.</li>
+                        <li>Soporte intercultural Español - Quechua.</li>
+                        <li>Algoritmo propio: Yachay Score.</li>
+                        <li>Dashboard de métricas institucionales.</li>
+                    </ul>
+                    <p><b>Tecnologías:</b> Node.js, PHP, Gemini API, Bootstrap, MySQL</p>
+                </div>`,
                 icon: 'success',
                 background: '#141b2c',
                 color: '#fff',
@@ -387,6 +1016,15 @@
                 }
             });
         }
+
+        // =============================================
+        // 5. AOS INIT
+        // =============================================
+        AOS.init({
+            duration: 800,
+            once: true
+        });
     </script>
+
 </body>
 </html>
