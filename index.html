@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="S.O.L. Tech - Soluciones On-Line Tecnológicas. Organización juvenil de Cusco que desarrolla tecnología con IA e IoT para el impacto social.">
-    <meta name="keywords" content="tecnología, IA, IoT, Cusco, innovación social, WasiQhari, Allin Yachay">
-    <title>S.O.L. Tech | Soluciones On-Line Tecnológicas</title>
+    <meta name="description" content="S.O.L. Tech - Soluciones On-Line Tecnológicas. Organización juvenil de Cusco que desarrolla tecnología con IA e IoT para el impacto social. Ganadores del Premio Internacional Jóvenes que Hacen Historia 2026.">
+    <meta name="keywords" content="tecnología, IA, IoT, Cusco, innovación social, WasiQhari, Allin Yachay, Premio Internacional">
+    <title>S.O.L. Tech | Soluciones On-Line Tecnológicas 🏆</title>
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome 6 -->
@@ -30,6 +30,7 @@
             --accent-pink: #ec4899;
             --accent-yellow: #fbbf24;
             --accent-green: #34d399;
+            --accent-gold: #ffd700;
             --text-main: #f8fafc;
             --text-dark: #0a0e1a;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -86,6 +87,11 @@
             background-clip: text;
         }
 
+        .gold-text {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
         .hero-section {
             padding: 160px 0 90px;
             position: relative;
@@ -137,6 +143,46 @@
             box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
         }
 
+        /* Tarjeta de Premio Dorada */
+        .premio-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(139, 92, 246, 0.15));
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.1);
+        }
+
+        .premio-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 80px rgba(255, 215, 0, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .premio-badge {
+            background: linear-gradient(135deg, var(--accent-gold), #ff8c00);
+            color: #000;
+            font-weight: 800;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent-gold), #ff8c00);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            padding: 12px 32px;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            opacity: 0.9;
+            transform: scale(1.03);
+            color: #000;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
         .btn-gradient {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             color: #fff;
@@ -176,7 +222,6 @@
             background-clip: text;
         }
 
-        /* Contadores */
         .counter-number {
             font-size: 3.5rem;
             font-weight: 800;
@@ -186,7 +231,6 @@
             background-clip: text;
         }
 
-        /* Línea de tiempo */
         .timeline-item {
             position: relative;
             padding-left: 30px;
@@ -208,8 +252,13 @@
             font-weight: 800;
             color: var(--accent-cyan);
         }
+        .timeline-item.gold::before {
+            background: linear-gradient(135deg, var(--accent-gold), #ff8c00);
+        }
+        .timeline-item.gold .year {
+            color: var(--accent-gold);
+        }
 
-        /* Logros Mejorados */
         .achievement-card {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -232,6 +281,13 @@
             margin-bottom: 15px;
             color: var(--accent-cyan);
         }
+        .achievement-card.gold {
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(139, 92, 246, 0.08));
+        }
+        .achievement-card.gold .icon {
+            color: var(--accent-gold);
+        }
         .achievement-card .badge-status {
             position: absolute;
             top: 15px;
@@ -248,12 +304,58 @@
             background: var(--accent-yellow);
             color: #000;
         }
-        .achievement-card .badge-status.pending {
-            background: var(--accent-pink);
-            color: #fff;
+        .achievement-card .badge-status.award {
+            background: var(--accent-gold);
+            color: #000;
         }
 
-        /* Tarjetas de equipo */
+        /* Galería de Premios con imágenes */
+        .premio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        .premio-item {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            background: var(--card-bg);
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .premio-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        .premio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+        }
+        .premio-item .premio-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .premio-item .placeholder-icon {
+            font-size: 4rem;
+            color: var(--accent-gold);
+        }
+
         .team-card {
             position: relative;
             overflow: hidden;
@@ -302,7 +404,6 @@
             transform: translateY(-3px);
         }
 
-        /* Chatbot */
         .chatbot-toggle {
             position: fixed;
             bottom: 30px;
@@ -457,7 +558,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mapa */
         #wasiqhari-map {
             height: 400px;
             border-radius: 20px;
@@ -648,7 +748,6 @@
             background: rgba(255,255,255,0.2);
         }
 
-        /* FAQ */
         .faq-item {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -688,7 +787,6 @@
             transform: rotate(180deg);
         }
 
-        /* Galería */
         .screenshot-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -722,6 +820,38 @@
             color: #fff;
         }
 
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confetti-fall linear forwards;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Badge personalizado para "Premio" */
+        .premio-star {
+            display: inline-block;
+            animation: pulse-star 2s ease-in-out infinite;
+        }
+        @keyframes pulse-star {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 120px 0 60px;
@@ -733,15 +863,24 @@
             .screenshot-gallery {
                 grid-template-columns: 1fr 1fr;
             }
+            .premio-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         @media (max-width: 576px) {
             .screenshot-gallery {
                 grid-template-columns: 1fr;
             }
+            .premio-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Confeti de Celebración -->
+    <div class="confetti-container" id="confettiContainer"></div>
 
     <!-- Canvas para partículas -->
     <canvas id="particles-canvas"></canvas>
@@ -751,6 +890,7 @@
         <div class="container">
             <a class="navbar-brand fw-extrabold fs-4" href="#">
                 <i class="fa-solid fa-bolt text-warning me-2"></i>S.O.L. <span class="gradient-text">Tech</span>
+                <span class="badge bg-warning text-dark ms-2 premio-star">🏆 PREMIO 2026</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -758,7 +898,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto gap-2 gap-lg-3 text-center py-3 py-lg-0 align-items-center">
                     <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#premio">🏆 Premio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#logros">Logros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
@@ -780,18 +920,21 @@
             <source src="https://cdn.pixabay.com/video/2022/02/22/108550-684548970_large.mp4" type="video/mp4">
         </video>
         <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <span class="badge bg-dark border border-secondary rounded-pill px-3 py-2 mb-3 text-light">
-                <i class="fa-solid fa-microchip text-info me-2"></i>Laboratorio de Innovación Social y Tecnológica
+            <span class="badge bg-warning text-dark rounded-pill px-3 py-2 mb-3 premio-star">
+                <i class="fa-solid fa-trophy me-2"></i>🏆 PREMIO INTERNACIONAL 2026
             </span>
             <h1 class="display-3 fw-bold mb-4">
                 Ingeniería, IA & Hardware <br>para <span class="gradient-text">Transformar el Mundo</span>
             </h1>
             <p class="lead text-secondary mx-auto mb-4" style="max-width: 700px;">
                 Somos una organización juvenil de Cusco dedicada a crear plataformas web de alto impacto, 
-                soluciones con Inteligencia Artificial e integración de sistemas hardware para resolver problemáticas sociales reales.
+                soluciones con Inteligencia Artificial e integración de sistemas hardware para resolver problemáticas sociales reales, 
+                <span class="gold-text">galardonada internacionalmente por nuestro impacto social con tecnología de vanguardia.</span>
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="#logros" class="btn btn-gradient">Ver Nuestros Logros</a>
+                <a href="#premio" class="btn btn-gold">
+                    <i class="fa-solid fa-trophy me-2"></i>Ver Nuestro Premio
+                </a>
                 <button onclick="verDemoInfo()" class="btn btn-outline-custom">
                     <i class="fa-solid fa-play me-2 text-info"></i>Ver Visión
                 </button>
@@ -799,17 +942,21 @@
             <div class="mt-5">
                 <span class="text-secondary small">
                     <i class="fa-solid fa-code me-1 text-info"></i>
-                    <span id="linesOfCode">0</span> líneas de código escritas con ❤️
+                    <span id="linesOfCode">0</span> líneas de código
                 </span>
                 <span class="text-secondary small ms-4">
                     <i class="fa-solid fa-eye me-1 text-info"></i>
                     <span id="visitCounter">0</span> visitas
                 </span>
+                <span class="text-secondary small ms-4">
+                    <i class="fa-solid fa-trophy me-1 gold-text"></i>
+                    <span class="gold-text">1</span> premio internacional
+                </span>
             </div>
         </div>
     </section>
 
-    <!-- Contadores -->
+    <!-- ========== CONTADORES ========== -->
     <section class="py-5">
         <div class="container">
             <div class="row g-4 text-center">
@@ -841,8 +988,100 @@
         </div>
     </section>
 
-    <!-- ========== NUEVA SECCIÓN: LOGROS DETALLADOS ========== -->
-    <section id="logros" class="py-5" style="background: rgba(0,0,0,0.15);">
+    <!-- ========== SECCIÓN DEL PREMIO ========== -->
+    <section id="premio" class="py-5" style="background: rgba(0,0,0,0.15);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-warning text-dark px-4 py-2 mb-3">
+                    <i class="fa-solid fa-trophy me-2"></i>AGOSTO 2026
+                </span>
+                <h2 class="display-4 fw-bold">
+                    <span class="gold-text">🏆 Premio Internacional</span>
+                </h2>
+                <h3 class="fw-bold gradient-text">"Jóvenes que Hacen Historia"</h3>
+                <p class="text-secondary">Reconocimiento a las Buenas Prácticas en Gestión de Proyectos de Inclusión Social Juvenil</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="zoom-in">
+                    <div class="glass-card premio-card p-4 p-md-5">
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-7">
+                                <span class="premio-badge"><i class="fa-solid fa-star me-1"></i> Reconocimiento Internacional</span>
+                                <h3 class="fw-bold mt-3">S.O.L. Tech</h3>
+                                <p class="text-secondary">
+                                    <strong>Proyecto:</strong> Ecosistema WasiQhari: Arquitectura IoT y Web para la Inclusión Social y Telemedicina del Adulto Mayor
+                                </p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="badge bg-dark border border-warning">🌎 Internacional</span>
+                                    <span class="badge bg-dark border border-warning">🏅 2026</span>
+                                    <span class="badge bg-dark border border-warning">📅 15 de Agosto</span>
+                                    <span class="badge bg-dark border border-warning">📍 Lima - Perú</span>
+                                </div>
+                                <p class="text-secondary small">
+                                    <strong>Otorgado por:</strong> RAJI Internacional, Cámara Nacional de Comercio del Perú y Parlamento Internacional de la Paz
+                                </p>
+                                <button onclick="verPremioCompleto()" class="btn btn-gold mt-2">
+                                    <i class="fa-solid fa-trophy me-2"></i>Ver Detalles del Premio
+                                </button>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="premio-gallery">
+                                    <!-- CERTIFICADO -->
+                                    <div class="premio-item" onclick="verImagenGrande('https://i.postimg.cc/vBCYzNtD/Certificado-RAJI.png', 'Certificado Internacional - Jóvenes que Hacen Historia')">
+                                        <img src="https://i.postimg.cc/vBCYzNtD/Certificado-RAJI.png" alt="Certificado" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'placeholder-icon fa-solid fa-scroll\'></i><div class=\'premio-label\'>📜 Certificado</div>'">
+                                        <div class="premio-label">📜 Certificado</div>
+                                    </div>
+                                    <!-- PLACA -->
+                                    <div class="premio-item" onclick="verImagenGrande('https://i.postimg.cc/xqDLWgnF/Whats-App-Image-2026-08-19-at-8-26-18-PM-(1).jpg', 'Placa del Premio - Jóvenes que Hacen Historia')">
+                                        <img src="https://i.postimg.cc/xqDLWgnF/Whats-App-Image-2026-08-19-at-8-26-18-PM-(1).jpg" alt="Placa" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'placeholder-icon fa-solid fa-award\'></i><div class=\'premio-label\'>🏅 Placa</div>'">
+                                        <div class="premio-label">🏅 Placa</div>
+                                    </div>
+                                    <!-- MEDALLA -->
+                                    <div class="premio-item" onclick="verImagenGrande('https://i.postimg.cc/d04mL8j1/Whats-App-Image-2026-08-19-at-8-26-18-PM.jpg', 'Medalla del Premio - Jóvenes que Hacen Historia')">
+                                        <img src="https://i.postimg.cc/d04mL8j1/Whats-App-Image-2026-08-19-at-8-26-18-PM.jpg" alt="Medalla" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'placeholder-icon fa-solid fa-medal\'></i><div class=\'premio-label\'>🥇 Medalla</div>'">
+                                        <div class="premio-label">🥇 Medalla</div>
+                                    </div>
+                                    <!-- RENZO CON PREMIO -->
+                                    <div class="premio-item" onclick="verImagenGrande('https://i.postimg.cc/zvWxbyfc/780443783-1521994916631040-6905545898642755875-n.jpg', 'Renzo Costa con el Premio - Jóvenes que Hacen Historia')">
+                                        <img src="https://i.postimg.cc/zvWxbyfc/780443783-1521994916631040-6905545898642755875-n.jpg" alt="Renzo con Premio" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'placeholder-icon fa-solid fa-user-tie\'></i><div class=\'premio-label\'>👤 Renzo con Premio</div>'">
+                                        <div class="premio-label">👤 Renzo con Premio</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4 g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card p-3 text-center">
+                        <i class="fa-solid fa-users text-warning fs-2 mb-2"></i>
+                        <h6>20 Jóvenes Reconocidos</h6>
+                        <small class="text-secondary">Perú, Colombia, México y Paraguay</small>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-card p-3 text-center">
+                        <i class="fa-solid fa-globe-americas text-warning fs-2 mb-2"></i>
+                        <h6>4 Países</h6>
+                        <small class="text-secondary">América Latina unida</small>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass-card p-3 text-center">
+                        <i class="fa-solid fa-calendar-check text-warning fs-2 mb-2"></i>
+                        <h6>Día Internacional de la Juventud</h6>
+                        <small class="text-secondary">15 de agosto de 2026</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== LOGROS ========== -->
+    <section id="logros" class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Reconocimientos</span>
@@ -850,9 +1089,20 @@
                 <p class="text-secondary">Cada logro nos acerca más a nuestro objetivo de transformar el Perú con tecnología</p>
             </div>
 
-            <!-- Logros destacados -->
             <div class="row g-4">
-                <!-- Logro 1: Hospital Regional -->
+                <!-- Premio Internacional -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="50">
+                    <div class="achievement-card gold">
+                        <span class="badge-status award"><i class="fa-solid fa-star me-1"></i>Internacional</span>
+                        <div class="icon"><i class="fa-solid fa-trophy" style="color: var(--accent-gold);"></i></div>
+                        <h5>Premio "Jóvenes que Hacen Historia"</h5>
+                        <p class="text-secondary small">Reconocimiento a las Buenas Prácticas en Gestión de Proyectos de Inclusión Social Juvenil</p>
+                        <span class="badge bg-warning text-dark">2026</span>
+                        <span class="badge bg-warning text-dark ms-2">🏆 RAJI</span>
+                    </div>
+                </div>
+
+                <!-- Hospital Regional -->
                 <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="100">
                     <div class="achievement-card">
                         <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
@@ -864,8 +1114,8 @@
                     </div>
                 </div>
 
-                <!-- Logro 2: Gobierno Regional -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="200">
+                <!-- Gobierno Regional -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="150">
                     <div class="achievement-card">
                         <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
                         <div class="icon"><i class="fa-solid fa-landmark"></i></div>
@@ -876,20 +1126,20 @@
                     </div>
                 </div>
 
-                <!-- Logro 3: Premio Nacional de la Juventud -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="300">
+                <!-- FabLab -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="200">
                     <div class="achievement-card">
-                        <span class="badge-status in-progress"><i class="fa-solid fa-clock me-1"></i>En Proceso</span>
-                        <div class="icon"><i class="fa-solid fa-award"></i></div>
-                        <h5>Premio Nacional de la Juventud</h5>
-                        <p class="text-secondary small">"Yenuri Chiguala Cruz" - Participación destacada</p>
-                        <span class="badge bg-warning text-dark">2026</span>
-                        <span class="badge bg-warning text-dark ms-2">Postulación</span>
+                        <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
+                        <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h5>FabLab Fellowship UC</h5>
+                        <p class="text-secondary small">Programa de innovación y fabricación digital - Universidad Continental</p>
+                        <span class="badge bg-info text-dark">2026</span>
+                        <span class="badge bg-success text-dark ms-2">Certificado</span>
                     </div>
                 </div>
 
-                <!-- Logro 4: Global Youth Mobilization -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="400">
+                <!-- GYM -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="300">
                     <div class="achievement-card">
                         <span class="badge-status in-progress"><i class="fa-solid fa-clock me-1"></i>En Proceso</span>
                         <div class="icon"><i class="fa-solid fa-globe-americas"></i></div>
@@ -900,32 +1150,32 @@
                     </div>
                 </div>
 
-                <!-- Logro 5: FabLab Fellowship UC -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="500">
+                <!-- Premio Nacional -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="400">
                     <div class="achievement-card">
-                        <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
-                        <div class="icon"><i class="fa-solid fa-microchip"></i></div>
-                        <h5>FabLab Fellowship</h5>
-                        <p class="text-secondary small">Programa de innovación y fabricación digital - Universidad Continental</p>
-                        <span class="badge bg-info text-dark">2026</span>
-                        <span class="badge bg-success text-dark ms-2">Certificado</span>
+                        <span class="badge-status in-progress"><i class="fa-solid fa-clock me-1"></i>En Proceso</span>
+                        <div class="icon"><i class="fa-solid fa-award"></i></div>
+                        <h5>Premio Nacional de la Juventud</h5>
+                        <p class="text-secondary small">"Yenuri Chiguala Cruz" - Postulación destacada</p>
+                        <span class="badge bg-warning text-dark">2026</span>
+                        <span class="badge bg-warning text-dark ms-2">Postulación</span>
                     </div>
                 </div>
 
-                <!-- Logro 6: 2do Lugar Feria UC -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="600">
+                <!-- 2do Lugar -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="500">
                     <div class="achievement-card">
                         <span class="badge-status completed"><i class="fa-solid fa-check me-1"></i>Completado</span>
-                        <div class="icon"><i class="fa-solid fa-trophy"></i></div>
+                        <div class="icon"><i class="fa-solid fa-medal"></i></div>
                         <h5>2do Lugar - IX Feria de Proyectos</h5>
                         <p class="text-secondary small">Categoría Innovación Tecnológica - Universidad Continental</p>
                         <span class="badge bg-info text-dark">Jun 2026</span>
-                        <span class="badge bg-success text-dark ms-2">🏆</span>
+                        <span class="badge bg-success text-dark ms-2">🏅</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Certificaciones adicionales -->
+            <!-- Certificaciones -->
             <div class="row mt-5">
                 <div class="col-12 text-center" data-aos="fade-up">
                     <h5 class="text-info mb-4"><i class="fa-solid fa-certificate me-2"></i>Certificaciones y Resoluciones</h5>
@@ -945,67 +1195,44 @@
         </div>
     </section>
 
-    <!-- ========== SECCIÓN DE PUBLICACIONES Y REDES ========== -->
-    <section class="py-5">
+    <!-- ========== PROGRESO DE PROYECTOS ========== -->
+    <section class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">Comunidad</span>
-                <h2 class="display-5 fw-bold">Publicaciones y <span class="gradient-text">Redes</span></h2>
+                <span class="text-info fw-bold text-uppercase">Estado Actual</span>
+                <h2 class="display-5 fw-bold">Progreso de <span class="gradient-text">Proyectos</span></h2>
             </div>
             <div class="row g-4">
-                <!-- Artículo Científico -->
                 <div class="col-md-6" data-aos="fade-right">
-                    <div class="glass-card p-4 h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <i class="fa-solid fa-flask text-info fs-2"></i>
-                            <div>
-                                <h6 class="mb-0">Artículo Científico</h6>
-                                <small class="text-secondary">En proceso de publicación</small>
-                            </div>
+                    <div class="glass-card p-4">
+                        <div class="d-flex justify-content-between">
+                            <h5><i class="fa-solid fa-hand-holding-heart text-danger me-2"></i>WasiQhari</h5>
+                            <span class="fw-bold text-info">85%</span>
                         </div>
-                        <p class="text-secondary small">
-                            <strong>WasiQhari:</strong> Sistema IoT para la detección temprana de vulnerabilidad en adultos mayores.
-                            <br><br>
-                            <span class="badge bg-dark border border-secondary">En revisión</span>
-                            <span class="badge bg-dark border border-secondary ms-2">Revista indexada</span>
-                        </p>
+                        <div class="project-progress">
+                            <div class="progress-bar" style="width: 85%;"></div>
+                        </div>
+                        <small class="text-secondary">Fase de pruebas con usuarios reales</small>
                     </div>
                 </div>
-
-                <!-- Redes Sociales -->
                 <div class="col-md-6" data-aos="fade-left">
-                    <div class="glass-card p-4 h-100">
-                        <div class="d-flex align-items-center gap-3 mb-3">
-                            <i class="fa-solid fa-share-nodes text-info fs-2"></i>
-                            <div>
-                                <h6 class="mb-0">Redes Sociales</h6>
-                                <small class="text-secondary">Síguenos para conocer nuestro día a día</small>
-                            </div>
+                    <div class="glass-card p-4">
+                        <div class="d-flex justify-content-between">
+                            <h5><i class="fa-solid fa-graduation-cap text-info me-2"></i>Allin Yachay Nexus</h5>
+                            <span class="fw-bold text-info">70%</span>
                         </div>
-                        <div class="d-flex gap-3 flex-wrap">
-                            <a href="https://www.facebook.com/people/SOL-Tech/61592034006842/" target="_blank" class="btn btn-outline-custom btn-sm">
-                                <i class="fa-brands fa-facebook me-2"></i>Facebook
-                            </a>
-                            <a href="#" class="btn btn-outline-custom btn-sm">
-                                <i class="fa-brands fa-linkedin me-2"></i>LinkedIn
-                            </a>
-                            <a href="#" class="btn btn-outline-custom btn-sm">
-                                <i class="fa-brands fa-instagram me-2"></i>Instagram
-                            </a>
+                        <div class="project-progress">
+                            <div class="progress-bar" style="width: 70%;"></div>
                         </div>
-                        <div class="mt-3">
-                            <small class="text-secondary">
-                                <i class="fa-solid fa-hashtag me-1"></i> #SOLTech #WasiQhari #AllinYachay #InnovaciónSocial
-                            </small>
-                        </div>
+                        <small class="text-secondary">Integración de Gemini API y pruebas de campo</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Línea de Tiempo -->
-    <section class="py-5" style="background: rgba(0,0,0,0.1);">
+    <!-- ========== LÍNEA DE TIEMPO ========== -->
+    <section class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Nuestra Historia</span>
@@ -1041,19 +1268,76 @@
                     <div class="timeline-item" data-aos="fade-right" data-aos-delay="350">
                         <span class="year">Jun 2026</span>
                         <h5>2do Lugar - IX Feria de Proyectos UC</h5>
-                        <p class="text-secondary">Participación con ambos proyectos, obteniendo el <strong>2do Lugar</strong> en la categoría de Innovación.</p>
+                        <p class="text-secondary">Obteniendo el <strong>2do Lugar</strong> en la categoría de Innovación.</p>
                     </div>
-                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
-                        <span class="year">Jul 2026</span>
-                        <h5>Premio Nacional de la Juventud</h5>
-                        <p class="text-secondary">Postulación al Premio "Yenuri Chiguala Cruz"</p>
+                    <div class="timeline-item gold" data-aos="fade-right" data-aos-delay="400">
+                        <span class="year">🌟 15 Ago 2026</span>
+                        <h5>🏆 Premio Internacional "Jóvenes que Hacen Historia"</h5>
+                        <p class="text-secondary">Reconocimiento Internacional a las Buenas Prácticas en Gestión de Proyectos de Inclusión Social Juvenil.</p>
+                        <span class="badge bg-warning text-dark">🎉 HITO</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Nosotros -->
+    <!-- ========== PUBLICACIONES Y REDES ========== -->
+    <section class="py-5" style="background: rgba(0,0,0,0.1);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Comunidad</span>
+                <h2 class="display-5 fw-bold">Publicaciones y <span class="gradient-text">Redes</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="fa-solid fa-flask text-info fs-2"></i>
+                            <div>
+                                <h6 class="mb-0">Artículo Científico</h6>
+                                <small class="text-secondary">En proceso de publicación</small>
+                            </div>
+                        </div>
+                        <p class="text-secondary small">
+                            <strong>WasiQhari:</strong> Sistema IoT para la detección temprana de vulnerabilidad en adultos mayores.
+                            <br><br>
+                            <span class="badge bg-dark border border-secondary">En revisión</span>
+                            <span class="badge bg-dark border border-secondary ms-2">Revista indexada</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="glass-card p-4 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <i class="fa-solid fa-share-nodes text-info fs-2"></i>
+                            <div>
+                                <h6 class="mb-0">Redes Sociales</h6>
+                                <small class="text-secondary">Síguenos para conocer nuestro día a día</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="https://www.facebook.com/people/SOL-Tech/61592034006842/" target="_blank" class="btn btn-outline-custom btn-sm">
+                                <i class="fa-brands fa-facebook me-2"></i>Facebook
+                            </a>
+                            <a href="#" class="btn btn-outline-custom btn-sm">
+                                <i class="fa-brands fa-linkedin me-2"></i>LinkedIn
+                            </a>
+                            <a href="#" class="btn btn-outline-custom btn-sm">
+                                <i class="fa-brands fa-instagram me-2"></i>Instagram
+                            </a>
+                        </div>
+                        <div class="mt-3">
+                            <small class="text-secondary">
+                                <i class="fa-solid fa-hashtag me-1"></i> #SOLTech #WasiQhari #PremioInternacional
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== NOSOTROS ========== -->
     <section id="nosotros" class="py-5">
         <div class="container">
             <div class="row g-4 align-items-center">
@@ -1115,7 +1399,7 @@
         </div>
     </section>
 
-    <!-- Arquitectura -->
+    <!-- ========== ARQUITECTURA ========== -->
     <section id="arquitectura" class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -1164,79 +1448,7 @@
         </div>
     </section>
 
-    <!-- Progreso de Proyectos -->
-    <section class="py-5">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">Estado Actual</span>
-                <h2 class="display-5 fw-bold">Progreso de <span class="gradient-text">Proyectos</span></h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6" data-aos="fade-right">
-                    <div class="glass-card p-4">
-                        <div class="d-flex justify-content-between">
-                            <h5><i class="fa-solid fa-hand-holding-heart text-danger me-2"></i>WasiQhari</h5>
-                            <span class="fw-bold text-info">85%</span>
-                        </div>
-                        <div class="project-progress">
-                            <div class="progress-bar" style="width: 85%;"></div>
-                        </div>
-                        <small class="text-secondary">Fase de pruebas con usuarios reales</small>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-left">
-                    <div class="glass-card p-4">
-                        <div class="d-flex justify-content-between">
-                            <h5><i class="fa-solid fa-graduation-cap text-info me-2"></i>Allin Yachay Nexus</h5>
-                            <span class="fw-bold text-info">70%</span>
-                        </div>
-                        <div class="project-progress">
-                            <div class="progress-bar" style="width: 70%;"></div>
-                        </div>
-                        <small class="text-secondary">Integración de Gemini API y pruebas de campo</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galería -->
-    <section class="py-5" style="background: rgba(0,0,0,0.1);">
-        <div class="container">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="text-info fw-bold text-uppercase">En Acción</span>
-                <h2 class="display-5 fw-bold">Galería de <span class="gradient-text">Proyectos</span></h2>
-            </div>
-            <div class="screenshot-gallery">
-                <div class="screenshot-item" data-aos="zoom-in" onclick="verCaptura('WasiQhari - Dashboard')">
-                    <img src="https://i.postimg.cc/TwSthD52/Captura-de-pantalla-2026-07-07-233706.png" alt="WasiQhari Dashboard">
-                    <div class="overlay">
-                        <small><i class="fa-solid fa-image me-1"></i> Dashboard de Monitoreo</small>
-                    </div>
-                </div>
-                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="100" onclick="verCaptura('Allin Yachay - Tutor IA')">
-                    <img src="https://i.postimg.cc/pLqYpF37/Captura-de-pantalla-2026-06-22-085417.png" alt="Allin Yachay Tutor">
-                    <div class="overlay">
-                        <small><i class="fa-solid fa-image me-1"></i> Tutor IA en Quechua</small>
-                    </div>
-                </div>
-                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="200" onclick="verCaptura('Mapa de Vulnerabilidad')">
-                    <img src="https://i.postimg.cc/T1MnZqWy/Captura-de-pantalla-2026-07-07-233732.png" alt="Mapa Vulnerabilidad">
-                    <div class="overlay">
-                        <small><i class="fa-solid fa-image me-1"></i> Mapa de Vulnerabilidad</small>
-                    </div>
-                </div>
-                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="300" onclick="verCaptura('Estadísticas Educativas')">
-                    <img src="https://i.postimg.cc/GhRkKKCk/Captura-de-pantalla-2026-06-22-085450.png" alt="Estadísticas Educativas">
-                    <div class="overlay">
-                        <small><i class="fa-solid fa-image me-1"></i> Estadísticas Educativas</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proyectos -->
+    <!-- ========== PROYECTOS ========== -->
     <section id="proyectos" class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -1247,11 +1459,11 @@
                 <div class="col-lg-6" data-aos="flip-left">
                     <div class="glass-card p-4 h-100">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="star-badge"><i class="fa-solid fa-star me-1"></i> Nov 2025</span>
+                            <span class="badge bg-warning text-dark">🏆 Premiado</span>
                             <i class="fa-solid fa-hand-holding-heart text-danger fs-3"></i>
                         </div>
                         <h3 class="fw-bold mb-2">WasiQhari</h3>
-                        <p class="text-secondary small">Plataforma de gestión georreferenciada con IA para el triaje de vulnerabilidad.</p>
+                        <p class="text-secondary small">Plataforma de gestión georreferenciada con IA para el triaje de vulnerabilidad. <strong class="gold-text">¡Proyecto Premiado!</strong></p>
                         <div class="d-flex gap-2 flex-wrap mb-4">
                             <span class="badge bg-dark border border-secondary">Triaje IA</span>
                             <span class="badge bg-dark border border-secondary">Geolocalización</span>
@@ -1284,8 +1496,44 @@
         </div>
     </section>
 
-    <!-- Equipo -->
-    <section id="equipo" class="py-5" style="background: rgba(0,0,0,0.1);">
+    <!-- ========== GALERÍA ========== -->
+    <section class="py-5" style="background: rgba(0,0,0,0.1);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">En Acción</span>
+                <h2 class="display-5 fw-bold">Galería de <span class="gradient-text">Proyectos</span></h2>
+            </div>
+            <div class="screenshot-gallery">
+                <div class="screenshot-item" data-aos="zoom-in" onclick="verImagenGrande('https://i.postimg.cc/TwSthD52/Captura-de-pantalla-2026-07-07-233706.png', 'WasiQhari - Dashboard de Monitoreo')">
+                    <img src="https://i.postimg.cc/TwSthD52/Captura-de-pantalla-2026-07-07-233706.png" alt="WasiQhari Dashboard">
+                    <div class="overlay">
+                        <small><i class="fa-solid fa-image me-1"></i> Dashboard de Monitoreo</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="100" onclick="verImagenGrande('https://i.postimg.cc/pLqYpF37/Captura-de-pantalla-2026-06-22-085417.png', 'Allin Yachay - Tutor IA en Quechua')">
+                    <img src="https://i.postimg.cc/pLqYpF37/Captura-de-pantalla-2026-06-22-085417.png" alt="Allin Yachay Tutor">
+                    <div class="overlay">
+                        <small><i class="fa-solid fa-image me-1"></i> Tutor IA en Quechua</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="200" onclick="verImagenGrande('https://i.postimg.cc/T1MnZqWy/Captura-de-pantalla-2026-07-07-233732.png', 'Mapa de Vulnerabilidad')">
+                    <img src="https://i.postimg.cc/T1MnZqWy/Captura-de-pantalla-2026-07-07-233732.png" alt="Mapa Vulnerabilidad">
+                    <div class="overlay">
+                        <small><i class="fa-solid fa-image me-1"></i> Mapa de Vulnerabilidad</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" data-aos="zoom-in" data-aos-delay="300" onclick="verImagenGrande('https://i.postimg.cc/GhRkKKCk/Captura-de-pantalla-2026-06-22-085450.png', 'Estadísticas Educativas')">
+                    <img src="https://i.postimg.cc/GhRkKKCk/Captura-de-pantalla-2026-06-22-085450.png" alt="Estadísticas Educativas">
+                    <div class="overlay">
+                        <small><i class="fa-solid fa-image me-1"></i> Estadísticas Educativas</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EQUIPO ========== -->
+    <section id="equipo" class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Talento Joven</span>
@@ -1303,6 +1551,7 @@
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/renzo-paolo-costa-paucarmayta-5072301ba/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href="https://github.com/RenzoPaolo07" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.instagram.com/renzocosta_pa/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1317,6 +1566,7 @@
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/brian-villavicencio-calvo-99906636a/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href="https://github.com/BrianUID" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.instagram.com/brianvc2006master/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1331,6 +1581,7 @@
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/shara-betzabeht-trinidad-marroquin-74511a175/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href="https://github.com/SharaTrinidad" target="_blank"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.instagram.com/shara_betzx/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1338,8 +1589,8 @@
         </div>
     </section>
 
-    <!-- Mapa -->
-    <section id="mapa" class="py-5">
+    <!-- ========== MAPA ========== -->
+    <section id="mapa" class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-4" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Geolocalización</span>
@@ -1349,8 +1600,8 @@
         </div>
     </section>
 
-    <!-- Aliados -->
-    <section class="py-5" style="background: rgba(0,0,0,0.1);">
+    <!-- ========== ALIADOS ========== -->
+    <section class="py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Confían en nosotros</span>
@@ -1380,17 +1631,17 @@
                 </div>
                 <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
                     <div class="ally-card">
-                        <div class="ally-icon"><i class="fa-brands fa-google"></i></div>
-                        <h6>Google</h6>
-                        <small class="text-secondary">Gemini API</small>
+                        <div class="ally-icon"><i class="fa-solid fa-globe-americas"></i></div>
+                        <h6>RAJI Internacional</h6>
+                        <small class="text-secondary">Premio 2026</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="py-5">
+    <!-- ========== FAQ ========== -->
+    <section class="py-5" style="background: rgba(0,0,0,0.1);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Información</span>
@@ -1404,10 +1655,19 @@
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            S.O.L. Tech (Soluciones On-Line Tecnológicas) es una organización juvenil fundada el 10 de noviembre de 2025 en Cusco, dedicada a desarrollar tecnología de vanguardia para resolver problemáticas sociales.
+                            S.O.L. Tech es una organización juvenil fundada en Cusco que desarrolla tecnología de vanguardia para resolver problemáticas sociales. En 2026 recibimos el Premio Internacional "Jóvenes que Hacen Historia".
                         </div>
                     </div>
                     <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>¿Qué premio ganaron?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            El 15 de agosto de 2026, S.O.L. Tech recibió el Premio y Reconocimiento Internacional de la Juventud "Jóvenes que Hacen Historia" por el proyecto WasiQhari, en la categoría de Buenas Prácticas en Gestión de Proyectos de Inclusión Social Juvenil.
+                        </div>
+                    </div>
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             <span>¿Cómo puedo ser voluntario?</span>
                             <i class="fa-solid fa-chevron-down"></i>
@@ -1416,22 +1676,13 @@
                             Puedes contactarnos a través del formulario de contacto o enviarnos un correo. Buscamos personas apasionadas por la tecnología y el impacto social.
                         </div>
                     </div>
-                    <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span>¿Dónde puedo ver WasiQhari en acción?</span>
-                            <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            Actualmente estamos realizando pruebas piloto en el Hospital Regional del Cusco y en distritos como San Sebastián y Santiago.
-                        </div>
-                    </div>
                     <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span>¿Qué ODS impactan sus proyectos?</span>
+                            <span>¿Qué ODS impactan?</span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            WasiQhari impacta los ODS 3 (Salud), 10 (Desigualdades) y 11 (Ciudades). Allin Yachay Nexus impacta los ODS 4 (Educación), 9 (Innovación) y 10 (Desigualdades).
+                            WasiQhari impacta ODS 3 (Salud), 10 (Desigualdades) y 11 (Ciudades). Allin Yachay Nexus impacta ODS 4 (Educación), 9 (Innovación) y 10 (Desigualdades).
                         </div>
                     </div>
                 </div>
@@ -1439,8 +1690,8 @@
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="py-5" style="background: rgba(0,0,0,0.15);">
+    <!-- ========== NEWSLETTER ========== -->
+    <section class="py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
@@ -1457,7 +1708,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ========== FOOTER ========== -->
     <footer id="contacto" class="py-5 border-top border-secondary" style="background: #05080e;">
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
@@ -1465,6 +1716,7 @@
                     <h4 class="fw-bold"><i class="fa-solid fa-bolt text-warning me-2"></i>S.O.L. <span class="gradient-text">Tech</span></h4>
                     <p class="text-secondary small mb-0">Soluciones On-Line Tecnológicas — Cusco, Perú.</p>
                     <p class="text-secondary small">Fundado: 10 de noviembre de 2025</p>
+                    <p class="text-secondary small gold-text">🏆 Premio Internacional "Jóvenes que Hacen Historia" 2026</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <a href="https://www.facebook.com/people/SOL-Tech/61592034006842/" target="_blank" class="btn btn-outline-custom btn-sm me-2">
@@ -1483,12 +1735,12 @@
         </div>
     </footer>
 
-    <!-- Scroll Top -->
+    <!-- ========== SCROLL TOP ========== -->
     <button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Chatbot -->
+    <!-- ========== CHATBOT ========== -->
     <button class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">
         <span class="pulse-ring"></span>
         <i class="fa-solid fa-robot"></i>
@@ -1502,7 +1754,7 @@
         <div class="chatbot-messages" id="chatbotMessages">
             <div class="message bot">
                 <i class="fa-solid fa-robot me-2 text-info"></i>
-                ¡Hola! Soy el asistente de S.O.L. Tech. Pregúntame sobre WasiQhari, Allin Yachay o nuestra misión en Cusco.
+                ¡Hola! Soy el asistente de S.O.L. Tech. Pregúntame sobre nuestro premio internacional, WasiQhari o Allin Yachay.
             </div>
         </div>
         <div class="chatbot-input">
@@ -1511,7 +1763,7 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- ========== SCRIPTS ========== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -1519,7 +1771,7 @@
 
     <script>
         // =============================================
-        // 1. PARTÍCULAS INTERACTIVAS
+        // 1. PARTÍCULAS INTERACTIVAS CON ORO
         // =============================================
         (function() {
             const canvas = document.getElementById('particles-canvas');
@@ -1549,9 +1801,10 @@
                     this.size = Math.random() * 2 + 0.5;
                     this.speedX = (Math.random() - 0.5) * 0.3;
                     this.speedY = (Math.random() - 0.5) * 0.3;
+                    this.isGold = Math.random() > 0.85;
+                    this.color = this.isGold ? '#ffd700' : '#ffffff';
                 }
                 update() {
-                    // Atracción al mouse
                     if (mouse.x !== null) {
                         const dx = mouse.x - this.x;
                         const dy = mouse.y - this.y;
@@ -1572,8 +1825,16 @@
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.5 + 0.2})`;
+                    ctx.fillStyle = this.color;
+                    ctx.globalAlpha = this.isGold ? 0.9 : (Math.random() * 0.5 + 0.3);
                     ctx.fill();
+                    ctx.globalAlpha = 1;
+                    if (this.isGold) {
+                        ctx.shadowColor = '#ffd700';
+                        ctx.shadowBlur = 10;
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    }
                 }
             }
 
@@ -1596,7 +1857,35 @@
         })();
 
         // =============================================
-        // 2. CONTADORES ANIMADOS
+        // 2. CONFETI DE CELEBRACIÓN
+        // =============================================
+        function launchConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ff6b6b', '#ffd93d', '#6c5ce7', '#ff8c00'];
+            
+            for (let i = 0; i < 120; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 4 + 'px';
+                confetti.style.height = Math.random() * 10 + 4 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                confetti.style.animationDuration = Math.random() * 2.5 + 1.5 + 's';
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 4500);
+            }
+        }
+
+        setTimeout(launchConfetti, 300);
+        setTimeout(launchConfetti, 1500);
+
+        // =============================================
+        // 3. CONTADORES ANIMADOS
         // =============================================
         function animateCounters() {
             const counters = document.querySelectorAll('.counter-number');
@@ -1622,10 +1911,10 @@
         });
 
         // =============================================
-        // 3. LÍNEAS DE CÓDIGO Y VISITAS
+        // 4. LÍNEAS DE CÓDIGO Y VISITAS
         // =============================================
         function animateLinesOfCode() {
-            const target = 15247;
+            const target = 17247;
             let current = 0;
             const el = document.getElementById('linesOfCode');
             const increment = target / 100;
@@ -1643,9 +1932,7 @@
 
         function updateVisitCounter() {
             let visits = localStorage.getItem('solTechVisits');
-            if (!visits) {
-                visits = 0;
-            }
+            if (!visits) visits = 0;
             visits = parseInt(visits) + 1;
             localStorage.setItem('solTechVisits', visits);
             document.getElementById('visitCounter').textContent = visits;
@@ -1655,7 +1942,7 @@
         updateVisitCounter();
 
         // =============================================
-        // 4. MAPA
+        // 5. MAPA
         // =============================================
         document.addEventListener('DOMContentLoaded', function() {
             const map = L.map('wasiqhari-map').setView([-13.53195, -71.96746], 13);
@@ -1689,9 +1976,9 @@
         });
 
         // =============================================
-        // 5. CHATBOT
+        // 6. CHATBOT CON GEMINI
         // =============================================
-        const API_KEY = "AQUI VA API KEY DE GOOGLE GEMINI"; // Reemplaza con tu API Key real
+        const API_KEY = "AQUI_VA_TU_API_KEY_DE_GEMINI";
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
         function toggleChatbot() {
@@ -1716,9 +2003,8 @@
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
             try {
-                const systemPrompt = `Eres el asistente virtual de S.O.L. Tech (Soluciones On-Line Tecnológicas), una organización juvenil de Cusco fundada el 10/11/2025. 
-                Logros: Alianza con Hospital Regional (R.D. N° 160-2026), Gobierno Regional, FabLab Fellowship UC, Premio Nacional Juventud (postulación), Global Youth Mobilization.
-                Proyectos: WasiQhari (17/11/2025, ODS 3,10,11) y Allin Yachay Nexus (Jun 2026, ODS 4,9,10).
+                const systemPrompt = `Eres el asistente de S.O.L. Tech. En agosto 2026 ganamos el Premio Internacional "Jóvenes que Hacen Historia" con WasiQhari. 
+                WasiQhari (17/11/2025, ODS 3,10,11) y Allin Yachay Nexus (Jun 2026, ODS 4,9,10). 
                 Responde breve y profesional.`;
 
                 const response = await fetch(API_URL, {
@@ -1734,8 +2020,7 @@
                 });
 
                 const data = await response.json();
-                const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 
-                             "Lo siento, no pude procesar tu consulta.";
+                const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Lo siento, no pude procesar tu consulta.";
 
                 document.getElementById('loadingMsg').remove();
                 messagesContainer.innerHTML += `<div class="message bot">${reply}</div>`;
@@ -1748,7 +2033,7 @@
         }
 
         // =============================================
-        // 6. FAQ INTERACTIVA
+        // 7. FAQ INTERACTIVA
         // =============================================
         function toggleFAQ(element) {
             const item = element.closest('.faq-item');
@@ -1756,7 +2041,7 @@
         }
 
         // =============================================
-        // 7. FUNCIONES SWEETALERT
+        // 8. FUNCIONES SWEETALERT
         // =============================================
         function verDemoInfo() {
             Swal.fire({
@@ -1769,12 +2054,46 @@
             });
         }
 
+        function verPremioCompleto() {
+            Swal.fire({
+                title: '🏆 Premio Internacional "Jóvenes que Hacen Historia"',
+                html: `
+                    <div class="text-start">
+                        <p><strong>📅 Fecha:</strong> 15 de agosto de 2026</p>
+                        <p><strong>📍 Lugar:</strong> Castillo Rospigliosi – Museo Aeronáutico del Perú</p>
+                        <p><strong>🏅 Categoría:</strong> Buenas Prácticas en Gestión de Proyectos de Inclusión Social Juvenil</p>
+                        <p><strong>🌎 Participantes:</strong> 20 jóvenes de Perú, Colombia, México y Paraguay</p>
+                        <p><strong>🏛️ Organizadores:</strong> RAJI Internacional, Cámara Nacional de Comercio del Perú, Parlamento Internacional de la Paz</p>
+                        <hr>
+                        <p><strong>✨ Proyecto Reconocido:</strong> Ecosistema WasiQhari: Arquitectura IoT y Web para la Inclusión Social y Telemedicina del Adulto Mayor</p>
+                    </div>
+                `,
+                icon: 'success',
+                background: '#141b2c',
+                color: '#fff',
+                confirmButtonColor: '#ffd700'
+            });
+        }
+
+        function verImagenGrande(url, titulo) {
+            Swal.fire({
+                title: titulo,
+                html: `<img src="${url}" style="width:100%; max-height:500px; object-fit:contain; border-radius:12px;">`,
+                background: '#141b2c',
+                color: '#fff',
+                confirmButtonColor: '#8b5cf6',
+                width: '90%',
+                maxWidth: '800px'
+            });
+        }
+
         function infoWasiQhari() {
             Swal.fire({
-                title: 'WasiQhari',
+                title: 'WasiQhari - Proyecto Premiado',
                 html: `<div class="text-start">
-                    <p><b>Lanzamiento:</b> 17/11/2025</p>
-                    <p><b>ODS:</b> 3, 10, 11</p>
+                    <p><b>🏆 Premio:</b> "Jóvenes que Hacen Historia" 2026</p>
+                    <p><b>📅 Lanzamiento:</b> 17/11/2025</p>
+                    <p><b>🎯 ODS:</b> 3, 10, 11</p>
                     <p><b>Tecnologías:</b> Laravel, MySQL, IoT (ESP32)</p>
                     <p><b>Aliados:</b> Hospital Regional (R.D. N° 160-2026)</p>
                 </div>`,
@@ -1789,8 +2108,8 @@
             Swal.fire({
                 title: 'Allin Yachay Nexus',
                 html: `<div class="text-start">
-                    <p><b>Lanzamiento:</b> Junio 2026</p>
-                    <p><b>ODS:</b> 4, 9, 10</p>
+                    <p><b>📅 Lanzamiento:</b> Junio 2026</p>
+                    <p><b>🎯 ODS:</b> 4, 9, 10</p>
                     <p><b>Tecnologías:</b> Node.js, Gemini API, PHP</p>
                     <p><b>Soporte:</b> Español y Quechua</p>
                 </div>`,
@@ -1798,17 +2117,6 @@
                 background: '#141b2c',
                 color: '#fff',
                 confirmButtonColor: '#06b6d4'
-            });
-        }
-
-        function verCaptura(titulo) {
-            Swal.fire({
-                title: titulo,
-                text: 'Captura de pantalla de nuestro sistema en funcionamiento.',
-                icon: 'info',
-                background: '#141b2c',
-                color: '#fff',
-                confirmButtonColor: '#8b5cf6'
             });
         }
 
@@ -1859,7 +2167,7 @@
         }
 
         // =============================================
-        // 8. MODO OSCURO/CLARO PERSISTENTE
+        // 9. MODO OSCURO/CLARO PERSISTENTE
         // =============================================
         let currentTheme = localStorage.getItem('solTechTheme') || 'dark';
 
@@ -1885,7 +2193,7 @@
         applyTheme(currentTheme);
 
         // =============================================
-        // 9. SCROLL TOP
+        // 10. SCROLL TOP
         // =============================================
         window.addEventListener('scroll', function() {
             const btn = document.getElementById('scrollTopBtn');
@@ -1897,7 +2205,7 @@
         });
 
         // =============================================
-        // 10. AOS INIT
+        // 11. AOS INIT
         // =============================================
         AOS.init({
             duration: 800,
