@@ -2,11 +2,46 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="S.O.L. Tech - Soluciones On-Line Tecnológicas. Organización juvenil de Cusco que desarrolla tecnología con IA e IoT para el impacto social. Ganadores del Premio Internacional Jóvenes que Hacen Historia 2026.">
-    <meta name="keywords" content="tecnología, IA, IoT, Cusco, innovación social, WasiQhari, Allin Yachay, Premio Internacional">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <!-- ========== SEO BÁSICO ========== -->
     <title>S.O.L. Tech | Soluciones On-Line Tecnológicas 🏆</title>
-    <!-- Bootstrap 5.3 CSS -->
+    <meta name="description" content="S.O.L. Tech - Organización juvenil de Cusco ganadora del Premio Internacional Jóvenes que Hacen Historia 2026. Desarrollamos tecnología con IA e IoT para el impacto social.">
+    <meta name="keywords" content="tecnología, IA, IoT, Cusco, innovación social, WasiQhari, Allin Yachay, Premio Internacional, jóvenes, emprendimiento">
+    <meta name="author" content="S.O.L. Tech">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://soltech.pe/">
+    
+    <!-- ========== OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ========== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://soltech.pe/">
+    <meta property="og:title" content="S.O.L. Tech | Soluciones On-Line Tecnológicas 🏆">
+    <meta property="og:description" content="Organización juvenil de Cusco ganadora del Premio Internacional Jóvenes que Hacen Historia 2026. Innovación con IA e IoT para el impacto social.">
+    <meta property="og:image" content="https://i.postimg.cc/tgCQ1Zyn/Certificado-RAJI.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="S.O.L. Tech">
+    <meta property="og:locale" content="es_PE">
+    
+    <!-- ========== TWITTER CARDS ========== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="S.O.L. Tech | Soluciones On-Line Tecnológicas 🏆">
+    <meta name="twitter:description" content="Organización juvenil de Cusco ganadora del Premio Internacional Jóvenes que Hacen Historia 2026.">
+    <meta name="twitter:image" content="https://i.postimg.cc/tgCQ1Zyn/Certificado-RAJI.png">
+    
+    <!-- ========== FAVICON ========== -->
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.postimg.cc/your-favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/your-favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://i.postimg.cc/your-favicon-192.png">
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/your-favicon-192.png">
+    
+    <!-- ========== PWA MANIFEST ========== -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#090d16">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- ========== BOOTSTRAP 5.3 ========== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -875,9 +910,38 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+
+        .form-control-custom {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-main);
+            border-radius: 12px;
+            padding: 12px 20px;
+            transition: var(--transition);
+        }
+        .form-control-custom:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+            background: var(--card-bg);
+            color: var(--text-main);
+        }
+        .form-control-custom::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        .form-control-custom:disabled {
+            opacity: 0.5;
+        }
+        
+        /* Botón de compartir */
+        .share-btn {
+            transition: all 0.3s ease;
+        }
+        .share-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
     </style>
 </head>
-<body>
+<body>  
 
     <!-- Confeti de Celebración -->
     <div class="confetti-container" id="confettiContainer"></div>
@@ -1838,6 +1902,56 @@
         </div>
     </section>
 
+    <!-- ========== NUEVA SECCIÓN: CONTACTO Y FORMULARIO ========== -->
+    <!-- Reemplaza la sección de Newsletter por esta versión mejorada -->
+    <section id="contacto" class="py-5" style="background: rgba(0,0,0,0.15);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="text-info fw-bold text-uppercase">Contáctanos</span>
+                <h2 class="display-5 fw-bold">Hablemos de <span class="gradient-text">Innovación</span></h2>
+                <p class="text-secondary">¿Tienes un proyecto, quieres ser voluntario o aliarte con nosotros? Escríbenos.</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="glass-card p-4 p-md-5">
+                        <form id="contactForm" action="https://formspree.io/f/tu-form-id-aqui" method="POST">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="nombre" class="form-label fw-semibold">Nombre completo</label>
+                                    <input type="text" class="form-control form-control-custom" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-semibold">Correo electrónico</label>
+                                    <input type="email" class="form-control form-control-custom" id="email" name="email" placeholder="tu@email.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="asunto" class="form-label fw-semibold">Asunto</label>
+                                    <input type="text" class="form-control form-control-custom" id="asunto" name="asunto" placeholder="¿Sobre qué quieres hablarnos?">
+                                </div>
+                                <div class="col-12">
+                                    <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
+                                    <textarea class="form-control form-control-custom" id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos tu idea, propuesta o consulta..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-gradient w-100" id="submitBtn">
+                                        <i class="fa-solid fa-paper-plane me-2"></i>Enviar mensaje
+                                    </button>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <small class="text-secondary">
+                                        <i class="fa-solid fa-lock me-1 text-info"></i>
+                                        Tus datos están seguros. No compartimos información con terceros.
+                                    </small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ========== NEWSLETTER ========== -->
     <section class="py-5">
         <div class="container">
@@ -1856,17 +1970,37 @@
         </div>
     </section>
 
-    <!-- ========== FOOTER ========== -->
-    <footer id="contacto" class="py-5 border-top border-secondary" style="background: #05080e;">
+    <!-- ========== FOOTER MEJORADO ========== -->
+    <footer class="py-5 border-top border-secondary" style="background: #05080e;">
         <div class="container">
             <div class="row align-items-center text-center text-md-start">
-                <div class="col-md-6 mb-3 mb-md-0">
+                <div class="col-md-4 mb-3 mb-md-0">
                     <h4 class="fw-bold"><i class="fa-solid fa-bolt text-warning me-2"></i>S.O.L. <span class="gradient-text">Tech</span></h4>
                     <p class="text-secondary small mb-0">Soluciones On-Line Tecnológicas — Cusco, Perú.</p>
                     <p class="text-secondary small">Fundado: 10 de noviembre de 2025</p>
                     <p class="text-secondary small gold-text">🏆 Premio Internacional "Jóvenes que Hacen Historia" 2026</p>
                 </div>
-                <div class="col-md-6 text-md-end">
+                <div class="col-md-4 mb-3 mb-md-0 text-center">
+                    <p class="text-secondary small mb-2">Comparte nuestra página</p>
+                    <div class="d-flex justify-content-center justify-content-md-center gap-2">
+                        <button onclick="compartirWhatsApp()" class="btn btn-outline-custom btn-sm share-btn" title="Compartir en WhatsApp">
+                            <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+                        </button>
+                        <button onclick="compartirFacebook()" class="btn btn-outline-custom btn-sm share-btn" title="Compartir en Facebook">
+                            <i class="fa-brands fa-facebook" style="color: #1877F2;"></i>
+                        </button>
+                        <button onclick="compartirLinkedIn()" class="btn btn-outline-custom btn-sm share-btn" title="Compartir en LinkedIn">
+                            <i class="fa-brands fa-linkedin" style="color: #0A66C2;"></i>
+                        </button>
+                        <button onclick="compartirTwitter()" class="btn btn-outline-custom btn-sm share-btn" title="Compartir en Twitter">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </button>
+                        <button onclick="copiarLink()" class="btn btn-outline-custom btn-sm share-btn" title="Copiar enlace">
+                            <i class="fa-solid fa-link" style="color: var(--accent-cyan);"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4 text-md-end">
                     <a href="https://www.facebook.com/people/SOL-Tech/61592034006842/" target="_blank" class="btn btn-outline-custom btn-sm me-2">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
@@ -2351,6 +2485,135 @@
                 btn.classList.remove('visible');
             }
         });
+
+        // =============================================
+        // NUEVO: FUNCIONES DE COMPARTIR
+        // =============================================
+        function compartirWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const texto = encodeURIComponent('🏆 ¡Conoce S.O.L. Tech! Organización juvenil ganadora del Premio Internacional "Jóvenes que Hacen Historia" 2026.');
+            window.open(`https://wa.me/?text=${texto}%20${url}`, '_blank');
+        }
+
+        function compartirFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function compartirLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function compartirTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const texto = encodeURIComponent('🏆 Conoce S.O.L. Tech - Innovación tecnológica con impacto social en Cusco');
+            window.open(`https://twitter.com/intent/tweet?text=${texto}&url=${url}`, '_blank');
+        }
+
+        function copiarLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                Swal.fire({
+                    title: '¡Enlace copiado!',
+                    text: 'Comparte nuestra página con tus contactos.',
+                    icon: 'success',
+                    background: '#141b2c',
+                    color: '#fff',
+                    confirmButtonColor: '#8b5cf6',
+                    timer: 2000,
+                    timerProgressBar: true
+                });
+            }).catch(() => {
+                // Fallback
+                const input = document.createElement('input');
+                input.value = window.location.href;
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                Swal.fire({
+                    title: '¡Enlace copiado!',
+                    text: 'Comparte nuestra página con tus contactos.',
+                    icon: 'success',
+                    background: '#141b2c',
+                    color: '#fff',
+                    confirmButtonColor: '#8b5cf6',
+                    timer: 2000,
+                    timerProgressBar: true
+                });
+            });
+        }
+
+        // =============================================
+        // NUEVO: FORMULARIO DE CONTACTO
+        // =============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const btn = document.getElementById('submitBtn');
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Enviando...';
+                    btn.disabled = true;
+                    
+                    const formData = new FormData(form);
+                    
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            Swal.fire({
+                                title: '¡Mensaje enviado! 🎉',
+                                text: 'Gracias por contactarnos. Te responderemos pronto.',
+                                icon: 'success',
+                                background: '#141b2c',
+                                color: '#fff',
+                                confirmButtonColor: '#8b5cf6'
+                            });
+                            form.reset();
+                        } else {
+                            throw new Error('Error al enviar');
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Hubo un problema al enviar el mensaje. Intenta de nuevo.',
+                            icon: 'error',
+                            background: '#141b2c',
+                            color: '#fff',
+                            confirmButtonColor: '#8b5cf6'
+                        });
+                    })
+                    .finally(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+                });
+            }
+        });
+
+        // =============================================
+        // REGISTRO DE SERVICE WORKER (PWA)
+        // =============================================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js')
+                .then(function(registration) {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Error al registrar Service Worker:', error);
+                });
+            });
+        }
 
         // =============================================
         // 11. AOS INIT
