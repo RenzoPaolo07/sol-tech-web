@@ -967,6 +967,7 @@
                     <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#equipo">Equipo</a></li>
                     <li class="nav-item"><a class="nav-link" href="#mapa">Mapa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#prensa">📰 Prensa</a></li>
                     <li class="nav-item">
                         <button onclick="toggleTheme()" class="theme-toggle">
                             <i class="fa-solid fa-moon" id="themeIcon"></i>
@@ -1007,6 +1008,10 @@
                 <span class="text-secondary small">
                     <i class="fa-solid fa-code me-1 text-info"></i>
                     <span id="linesOfCode">0</span> líneas de código
+                </span>
+                <span class="text-secondary small ms-4">
+                    <i class="fa-solid fa-newspaper me-1 text-info"></i>
+                    <span class="text-info">8</span> menciones en medios
                 </span>
                 <span class="text-secondary small ms-4">
                     <i class="fa-solid fa-eye me-1 text-info"></i>
@@ -1144,8 +1149,8 @@
         </div>
     </section>
 
-    <!-- ========== NUEVA SECCIÓN: PRENSA Y MEDIOS ========== -->
-    <section class="py-5" style="background: rgba(0,0,0,0.08);">
+    <!-- ========== SECCIÓN: PRENSA Y MEDIOS ========== -->
+    <section id="prensa" class="py-5" style="background: rgba(0,0,0,0.08);">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
                 <span class="text-info fw-bold text-uppercase">Apariciones en Medios</span>
@@ -1154,8 +1159,64 @@
             </div>
 
             <div class="row g-4">
-                <!-- Cusco Titular -->
+                <!-- Universidad Continental - LinkedIn (DESTACADO) -->
                 <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="100">
+                    <div class="glass-card p-4 h-100 d-flex flex-column position-relative" style="border-color: var(--accent-cyan); border-width: 2px;">
+                        <span class="badge bg-info text-dark position-absolute" style="top: 15px; right: 15px; font-size: 0.65rem;">
+                            ⭐ DESTACADO
+                        </span>
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
+                                <i class="fa-brands fa-linkedin text-primary fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Universidad Continental</h6>
+                                <small class="text-secondary">LinkedIn · 139K seguidores</small>
+                            </div>
+                        </div>
+                        <p class="text-secondary small flex-grow-1">
+                            "#OrgulloUC El Premio y Reconocimiento Internacional de la Juventud... ¡Felicitamos a Renzo Costa P., Brian Villavicencio C. y Shara Trinidad M. por recibir este importante reconocimiento en este 2026!"
+                        </p>
+                        <div class="d-flex gap-2 flex-wrap mb-2">
+                            <span class="badge bg-dark border border-secondary">#OrgulloUC</span>
+                            <span class="badge bg-dark border border-secondary">🏆 Premio</span>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/orgullouc-share-7502806262024339456-U2fv/" target="_blank" class="btn btn-outline-custom btn-sm w-100 mt-2">
+                            <i class="fa-brands fa-linkedin me-2"></i>Ver Publicación
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Universidad Continental - Facebook (DESTACADO) -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="150">
+                    <div class="glass-card p-4 h-100 d-flex flex-column position-relative" style="border-color: var(--accent-cyan); border-width: 2px;">
+                        <span class="badge bg-info text-dark position-absolute" style="top: 15px; right: 15px; font-size: 0.65rem;">
+                            ⭐ DESTACADO
+                        </span>
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
+                                <i class="fa-brands fa-facebook text-primary fs-3"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0">Universidad Continental</h6>
+                                <small class="text-secondary">Facebook · Oficial</small>
+                            </div>
+                        </div>
+                        <p class="text-secondary small flex-grow-1">
+                            "#OrgulloUC ... ¡Felicitamos a Renzo Costa P., Brian Villavicencio C. y Shara Trinidad M. por recibir este importante reconocimiento en este 2026!"
+                        </p>
+                        <div class="d-flex gap-2 flex-wrap mb-2">
+                            <span class="badge bg-dark border border-secondary">#OrgulloUC</span>
+                            <span class="badge bg-dark border border-secondary">🎓 UC</span>
+                        </div>
+                        <a href="https://www.facebook.com/share/1Etf1kRZmk/?mibextid=wwXIfr" target="_blank" class="btn btn-outline-custom btn-sm w-100 mt-2">
+                            <i class="fa-brands fa-facebook me-2"></i>Ver Publicación
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cusco Titular -->
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="200">
                     <div class="glass-card p-4 h-100 d-flex flex-column">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
@@ -1176,7 +1237,7 @@
                 </div>
 
                 <!-- Noticias en Cusco -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="200">
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="250">
                     <div class="glass-card p-4 h-100 d-flex flex-column">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <div class="bg-success bg-opacity-10 p-3 rounded-circle">
@@ -1218,7 +1279,7 @@
                 </div>
 
                 <!-- NewsCusco -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="400">
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="350">
                     <div class="glass-card p-4 h-100 d-flex flex-column">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <div class="bg-info bg-opacity-10 p-3 rounded-circle">
@@ -1239,7 +1300,7 @@
                 </div>
 
                 <!-- CTC CUSCO -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="500">
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="400">
                     <div class="glass-card p-4 h-100 d-flex flex-column">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <div class="bg-warning bg-opacity-10 p-3 rounded-circle">
@@ -1260,7 +1321,7 @@
                 </div>
 
                 <!-- EAP Ingeniería Sistemas UC -->
-                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="600">
+                <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="450">
                     <div class="glass-card p-4 h-100 d-flex flex-column">
                         <div class="d-flex align-items-center gap-3 mb-3">
                             <div class="bg-secondary bg-opacity-10 p-3 rounded-circle">
@@ -1281,13 +1342,18 @@
                 </div>
             </div>
 
-            <!-- Contador de menciones -->
+            <!-- Contador de menciones actualizado -->
             <div class="text-center mt-5" data-aos="fade-up">
                 <div class="glass-card p-4 d-inline-block">
-                    <span class="display-6 fw-bold gradient-text">6</span>
+                    <span class="display-6 fw-bold gradient-text">8</span>
                     <span class="text-secondary"> menciones en medios</span>
                     <span class="badge bg-warning text-dark ms-3">🎉 En crecimiento</span>
                 </div>
+                <p class="text-secondary small mt-3 mb-0">
+                    Incluyendo reconocimiento oficial de la 
+                    <a href="https://www.facebook.com/share/1Etf1kRZmk/?mibextid=wwXIfr" target="_blank" class="text-info">Universidad Continental</a> 
+                    en Facebook y LinkedIn
+                </p>
             </div>
         </div>
     </section>
@@ -1487,6 +1553,12 @@
                         <h5>🏆 Premio Internacional "Jóvenes que Hacen Historia"</h5>
                         <p class="text-secondary">Reconocimiento Internacional a las Buenas Prácticas en Gestión de Proyectos de Inclusión Social Juvenil.</p>
                         <span class="badge bg-warning text-dark">🎉 HITO</span>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="450">
+                        <span class="year">Ago 2026</span>
+                        <h5>🎓 Reconocimiento Oficial UC</h5>
+                        <p class="text-secondary">La Universidad Continental destaca a S.O.L. Tech en sus redes sociales oficiales (Facebook y LinkedIn) con el hashtag <strong>#OrgulloUC</strong>.</p>
+                        <span class="badge bg-info text-dark">📰 8 menciones en medios</span>
                     </div>
                 </div>
             </div>
@@ -1832,6 +1904,14 @@
                         <div class="ally-icon"><i class="fa-solid fa-landmark"></i></div>
                         <h6>Gobierno Regional</h6>
                         <small class="text-secondary">Cusco</small>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="ally-card" style="border-color: var(--accent-cyan);">
+                        <div class="ally-icon"><i class="fa-solid fa-university" style="color: var(--accent-cyan);"></i></div>
+                        <h6>Universidad Continental</h6>
+                        <small class="text-secondary">#OrgulloUC · 2026</small>
+                        <span class="badge bg-info text-dark mt-2" style="font-size: 0.6rem;">⭐ Reconocimiento Oficial</span>
                     </div>
                 </div>
                 <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
